@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adopt a Pet</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="Deposit.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navigation">
+        <ul class="menu">
+          <li>
+            <a onclick="window.location.href='index.html';" href="#Home">Home</a>
+          </li>
+          <li>
+            <a onclick="window.location.href='index.html';" href="#about"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a onclick="window.location.href='index.html';" href="#pets"
+              >Adopt a Pet</a
+            >
+          </li>
+          <li>
+            <a onclick="window.location.href='index.html';" href="#contact"
+              >Contact</a
+            >
+          </li>
+          <li><a onclick="window.location.href='profile.html';">Profile</a></li>
+        </ul>
+      </nav>
+
+    <!-- Adopt Section -->
+    <div class="container mt-5">
+      <h2 class="mb-4 text-center">Money Deposit</h2>
+
+
+      <!-- Adoption Form -->
+      <form id="adoptForm">
+        <div class="form-group">
+          <label for="fullName">Amount:</label>
+          <input type="text" class="form-control" id="fullName" required />
+
+        <!-- Payment Section -->
+        <div class="payment-section mt-4">
+          <button type="button" class="btn btn-primary" id="payBtn">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-section mt-5">
+      <div class="container text-center">
+        <p>&copy; 2024 Picku. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Payment Gateway Script -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="adopt.js"></script>
+  </body>
+</html>

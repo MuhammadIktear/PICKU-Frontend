@@ -15,6 +15,31 @@
     <link rel="stylesheet" href="update_profile.css" />
   </head>
   <body>
+    <!-- Navigation Bar -->
+    <nav class="navigation">
+      <ul class="menu">
+        <li>
+          <a onclick="window.location.href='index.html';" href="#Home">Home</a>
+        </li>
+        <li>
+          <a onclick="window.location.href='index.html';" href="#about"
+            >About Us</a
+          >
+        </li>
+        <li>
+          <a onclick="window.location.href='index.html';" href="#pets"
+            >Adopt a Pet</a
+          >
+        </li>
+        <li>
+          <a onclick="window.location.href='index.html';" href="#contact"
+            >Contact</a
+          >
+        </li>
+        <li><a onclick="window.location.href='profile.html';">Profile</a></li>
+      </ul>
+    </nav>
+
     <div class="container">
       <div class="view-account">
         <section class="module">
@@ -30,14 +55,15 @@
                   <li class="name">Rebecca Sanders</li>
                   <li class="email"><a href="#">Rebecca.S@website.com</a></li>
                   <li class="activity">Last logged in: Today at 2:18pm</li>
+                  <li class="activity">Account Balance: 90$</li>
                 </ul>
               </div>
               <nav class="side-menu">
-                <ul class="nav flex-column">
-                  <li class="nav-item active">
-                    <a href="#" class="nav-link"><span class=""></span></a>
-                  </li>
-                </ul>
+                <h2 class="title text-center">
+                  <a onclick="window.location.href='deposit.html';">
+                    <span class="badge bg-info ms-2">Money Deposit</span>
+                  </a>
+                </h2>
               </nav>
             </div>
             <div class="content-panel">
@@ -142,7 +168,7 @@
                 <hr />
                 <div class="mb-3 row">
                   <div
-                    class="col-md-10 col-sm-9 col-12 offset-md-2 offset-sm-3"
+                    class="col-md-10 col-sm-9 m-2 col-12 offset-md-2 offset-sm-3"
                   >
                     <input
                       class="btn btn-dark"
@@ -150,6 +176,16 @@
                       value="Update Profile"
                     />
                   </div>
+                  <div
+                    class="col-md-10 col-sm-9 m-2 col-12 offset-md-2 offset-sm-3"
+                  >
+                  <input 
+                  onclick="window.location.href='index.html';" 
+                  class="btn btn-dark"
+                  type="button"
+                  value="Logout"
+                />
+                  </div>                  
                 </div>
               </form>
             </div>

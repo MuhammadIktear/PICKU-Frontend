@@ -3,123 +3,70 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Picku - Pet Adoption</title>
+    <title>Pet Adoption - Details</title>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="details.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Navigation Bar -->
+    <!-- Navbar -->
     <nav class="navigation">
       <ul class="menu">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#pets">Adopt a Pet</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li>
+          <a onclick="window.location.href='index.html';" href="#Home">Home</a>
+        </li>
+        <li>
+          <a onclick="window.location.href='index.html';" href="#about"
+            >About Us</a
+          >
+        </li>
+        <li>
+          <a onclick="window.location.href='index.html';" href="#pets"
+            >Adopt a Pet</a
+          >
+        </li>
+        <li>
+          <a onclick="window.location.href='index.html';" href="#contact"
+            >Contact</a
+          >
+        </li>
+        <li><a onclick="window.location.href='profile.html';">Profile</a></li>
       </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-      <div class="container">
-        <h1>Welcome to Picku</h1>
-        <p>Your companion is waiting for you. Adopt a pet today!</p>
-        <a href="#pets" class="btn btn-primary">View Pets</a>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about-section">
-      <div class="container">
-        <h2>About Us</h2>
-        <p>
-          Picku is dedicated to connecting pets with loving families. Our
-          mission is to ensure every pet finds a happy home.
-        </p>
-      </div>
-    </section>
-
-    <div class="container_filter">
-      <!-- Filters -->
-      <div class="filter-container">
-        <div class="filter-group">
-          <div class="filter-section">
-            <label for="species">Species</label>
-            <select id="species">
-              <option value="">Select</option>
-            </select>
-          </div>
-          <div class="filter-section">
-            <label for="breed">Breed</label>
-            <select id="breed">
-              <option value="">Select</option>
-            </select>
-          </div>
-          <div class="filter-section">
-            <label for="color">Color</label>
-            <select id="color">
-              <option value="">Select</option>
-            </select>
-          </div>
-          <div class="filter-section">
-            <label for="size">Size</label>
-            <select id="size">
-              <option value="">Select</option>
-            </select>
-          </div>
-          <div class="filter-section">
-            <label for="sex">Sex</label>
-            <select id="sex">
-              <option value="">Select</option>
-            </select>
-          </div>
-          <div class="filter-section">
-            <label for="status">Status</label>
-            <select id="status">
-              <option value="">Select</option>
-            </select>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-8">
+          <img
+            id="pet-image"
+            class="pet-image img-fluid rounded shadow mb-3"
+            alt="Pet Image"
+          />
+        </div>
+        <div class="col-md-4">
+          <div class="pet-details p-3 bg-white rounded shadow-sm">
+            <h4 id="pet-name"></h4>
+            <p class="badge badge-success" id="pet-status"></p>
+            <table class="table table-borderless" id="pet-info">
+              <!-- Details will be populated here -->
+            </table>
+            <button
+              onclick="window.location.href='adopt.html';"
+              class="btn btn-primary btn-block"
+            >
+              Apply to Adopt
+            </button>
           </div>
         </div>
-        <div class="filter-group">
-          <button class="reset-button">Reset</button>
-          <button class="filter-button">Search</button>
-        </div>
       </div>
-
-      <!-- Adopt a Pet Section -->
-      <section id="pets" class="adopt-section">
-        <div id="pet-grid" class="pet-grid">
-          <!-- Pet cards will be inserted here by JavaScript -->
-        </div>
-      </section>
     </div>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
+    <section id="Details2" class="details2-section">
       <div class="container">
-        <h2>Contact Us</h2>
-        <p>
-          If you have any questions or want to adopt a pet, please reach out to
-          us.
-        </p>
-        <form action="/submit-form" method="post">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Your Name"
-            required
-          />
-          <input
-            type="email"
-            class="form-control"
-            placeholder="Your Email"
-            required
-          />
-          <textarea
-            class="form-control textarea"
-            placeholder="Your Message"
-            required
-          ></textarea>
-          <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
+        <h2>Description</h2>
+        <p id="pet-description"></p>
       </div>
     </section>
 
@@ -129,6 +76,10 @@
         <p>&copy; 2024 Picku. All rights reserved.</p>
       </div>
     </footer>
-    <script src="script.js"></script>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="details.js"></script>
   </body>
 </html>

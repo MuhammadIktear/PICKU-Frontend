@@ -4,6 +4,39 @@
   box-sizing: border-box;
 }
 
+/* Navigation styles */
+.navigation {
+  background: #fff;
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.menu li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.menu li a {
+  color: #000;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 20px;
+  transition: color 0.3s ease;
+}
+
+.menu li a:hover {
+  color: #ce8460;
+}
+
 body {
   background: #1f242b;
   font-family: "Arial", sans-serif;
