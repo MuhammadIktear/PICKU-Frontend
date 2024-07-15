@@ -10,13 +10,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const resetButton = document.querySelector(".reset-button");
 
   const API_ENDPOINTS = {
-    pets: "http://127.0.0.1:8000/pet/pets/",
-    species: "http://127.0.0.1:8000/api/species/",
-    breeds: "http://127.0.0.1:8000/api/breeds/",
-    colors: "http://127.0.0.1:8000/api/colors/",
-    sizes: "http://127.0.0.1:8000/api/sizes/",
-    sexes: "http://127.0.0.1:8000/api/sexes/",
-    statuses: "http://127.0.0.1:8000/api/statuses/",
+    pets: "picku.onrender.com/pets/",
+    species: "picku.onrender.com/filter/species/",
+    breeds: "picku.onrender.com/filter/breeds/",
+    colors: "picku.onrender.com/filter/colors/",
+    sizes: "picku.onrender.com/filter/sizes/",
+    sexes: "picku.onrender.com/filter/sexes/",
+    statuses: "picku.onrender.com/filter/statuses/",
   };
 
   const fetchOptions = async (url, selectElement) => {
