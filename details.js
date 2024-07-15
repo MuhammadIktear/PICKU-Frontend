@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const petId = urlParams.get("id");
 
   if (petId) {
-    const pet = await fetchData(`http://127.0.0.1:8000/pet/pets/${petId}/`);
+    const pet = await fetchData(`https://picku.onrender.com/pets/${petId}/`);
     if (pet) {
       displayPetDetails(pet);
     }
@@ -56,7 +56,7 @@ const displayPetDetails = (pet) => {
       `;
     document.getElementById("pet-info").innerHTML = petInfo;
 
-    const imageUrl = `http://127.0.0.1:8000${pet.image}`;
+    const imageUrl = `https://picku.onrender.com${pet.image}`;
     const petImage = document.getElementById("pet-image");
     petImage.src = imageUrl;
     petImage.alt = pet.name;
