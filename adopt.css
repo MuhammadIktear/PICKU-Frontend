@@ -1,0 +1,46 @@
+/* Basic styling for the adopt page */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.navigation {
+  background-color: #343a40;
+  padding: 1rem 0;
+}
+
+.navigation .menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.navigation .menu li {
+  margin: 0 1rem;
+}
+
+.navigation .menu li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.conditions {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.payment-section {
+  text-align: center;
+}
+
+.footer-section {
+  background-color: #343a40;
+  color: #fff;
+  padding: 1rem 0;
+}
+
+.footer-section p {
+  margin: 0;
+}

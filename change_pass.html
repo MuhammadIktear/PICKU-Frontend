@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navigation">
+      <ul class="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#pets">Adopt a Pet</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="container-fluid vh-100">
+      <div class="row h-100">
+        <div
+          class="col-md-6 d-none d-md-flex justify-content-center align-items-center left-section"
+        >
+          <div class="text-center">
+            <img
+              src="img/[removal.ai]_b3b418e6-11a5-433d-81a7-fc9cbe394d32-screenshot-2024-07-12-232002.png"
+              alt="Logo"
+              class="img-fluid mb-4 logo"
+            />
+            <h1 class="text-white logo-text">PICKU</h1>
+            <p class="text-white logo-subtext">A pet Adoption Website</p>
+          </div>
+        </div>
+        <div
+          class="col-md-6 d-flex justify-content-center align-items-center bg-light"
+        >
+          <div class="login-form text-center">
+            <h2 class="text-primary">Reset Password</h2>
+            <form>
+              <div class="form-group">
+                <label for="password" class="sr-only">Old Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="old_password"
+                  placeholder="Old Password"
+                />
+              </div>
+              <div class="form-group">
+                <label for="password" class="sr-only">New Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="new_password"
+                  placeholder="New Password"
+                />
+              </div>
+              <div class="form-group">
+                <label for="confirm-password" class="sr-only"
+                  >Confirm Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="confirm-password"
+                  placeholder="Confirm Password"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">
+                Reset Password
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer-section">
+      <div class="container">
+        <p>&copy; 2024 Picku. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

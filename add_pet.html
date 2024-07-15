@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Pet</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="add_pet.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card mt-5 shadow-lg">
+            <div class="card-header bg-dark text-white text-center">
+              <h3>Add New Pet</h3>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="Enter pet's name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="species">Species</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="species"
+                    placeholder="Enter species"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="status">Status</label>
+                  <select class="form-control" id="status">
+                    <option>Pending</option>
+                    <option>Running</option>
+                    <option>Adopted</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="location">Location (Town/City)</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="location"
+                    placeholder="Enter location"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="sex">Sex</label>
+                  <select class="form-control" id="sex">
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="main-colour">Main Colour(s)</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="main-colour"
+                    placeholder="Enter main colour(s)"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="rehoming-fee">Rehoming Fee</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="rehoming-fee"
+                    placeholder="Enter rehoming fee"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="personality-summary"
+                    >Animal Personality Summary</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="personality-summary"
+                    rows="3"
+                    placeholder="Enter personality summary"
+                  ></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="animal-images">Animal Images</label>
+                  <input
+                    type="file"
+                    class="form-control-file"
+                    id="animal-images"
+                    multiple
+                  />
+                </div>
+                <button type="submit" class="btn btn-dark btn-block">
+                  Add Pet
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

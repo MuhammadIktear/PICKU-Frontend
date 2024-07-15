@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Picku - Pet Adoption</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navigation">
+      <ul class="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#pets">Adopt a Pet</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+      <div class="container">
+        <h1>Welcome to Picku</h1>
+        <p>Your companion is waiting for you. Adopt a pet today!</p>
+        <a href="#pets" class="btn btn-primary">View Pets</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <h2>About Us</h2>
+        <p>
+          Picku is dedicated to connecting pets with loving families. Our
+          mission is to ensure every pet finds a happy home.
+        </p>
+      </div>
+    </section>
+
+    <div class="container_filter">
+      <!-- Filters -->
+      <div class="filter-container">
+        <div class="filter-group">
+          <div class="filter-section">
+            <label for="species">Species</label>
+            <select id="species">
+              <option value="">Select</option>
+            </select>
+          </div>
+          <div class="filter-section">
+            <label for="breeds">Breed</label>
+            <select id="breeds">
+              <option value="">Select</option>
+            </select>
+          </div>
+          <div class="filter-section">
+            <label for="colors">Color</label>
+            <select id="colors">
+              <option value="">Select</option>
+            </select>
+          </div>
+          <div class="filter-section">
+            <label for="sizes">Size</label>
+            <select id="sizes">
+              <option value="">Select</option>
+            </select>
+          </div>
+          <div class="filter-section">
+            <label for="sexes">Sex</label>
+            <select id="sexes">
+              <option value="">Select</option>
+            </select>
+          </div>
+          <div class="filter-section">
+            <label for="statuses">Status</label>
+            <select id="statuses">
+              <option value="">Select</option>
+            </select>
+          </div>
+        </div>
+        <div class="filter-group">
+          <button class="reset-button">Reset</button>
+          <button class="filter-button">Search</button>
+        </div>
+      </div>
+
+      <!-- Adopt a Pet Section -->
+      <section id="pets" class="adopt-section">
+        <div id="pet-grid" class="pet-grid">
+          <!-- Pet cards will be inserted here by JavaScript -->
+        </div>
+      </section>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <p>
+          If you have any questions or want to adopt a pet, please reach out to
+          us.
+        </p>
+        <form action="/submit-form" method="post">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Your Name"
+            required
+          />
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Your Email"
+            required
+          />
+          <textarea
+            class="form-control textarea"
+            placeholder="Your Message"
+            required
+          ></textarea>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+      <div class="container">
+        <p>&copy; 2024 Picku. All rights reserved.</p>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

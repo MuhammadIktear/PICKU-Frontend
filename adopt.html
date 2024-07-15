@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adopt a Pet</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="adopt.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navigation">
+      <ul class="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="adopt.html">Adopt a Pet</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Adopt Section -->
+    <div class="container mt-5">
+      <h2 class="mb-4 text-center">Adopt a Pet</h2>
+
+      <!-- Conditions -->
+      <div class="conditions mb-4">
+        <h4>Adoption Conditions:</h4>
+        <ul>
+          <li>Adopters must be at least 18 years old.</li>
+          <li>A valid ID with current address is required.</li>
+          <li>Adopters must agree to a home visit by our team.</li>
+          <li>
+            All current pets in the home must be spayed/neutered and up to date
+            on vaccinations.
+          </li>
+          <li>
+            Adopters must agree to provide proper care and a loving home for the
+            pet.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Adoption Form -->
+      <form id="adoptForm">
+        <div class="form-group">
+          <label for="fullName">Full Name:</label>
+          <input type="text" class="form-control" id="fullName" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address:</label>
+          <input type="email" class="form-control" id="email" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <input type="tel" class="form-control" id="phone" required />
+        </div>
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <input type="text" class="form-control" id="address" required />
+        </div>
+        <div class="form-group">
+          <label for="pet">Pet Interested In:</label>
+          <select class="form-control" id="pet" required>
+            <option value="Fluffy">Fluffy - Golden Retriever</option>
+            <option value="Whiskers">Whiskers - Persian Cat</option>
+            <option value="Buddy">Buddy - Beagle</option>
+            <option value="Max">Max - Labrador</option>
+          </select>
+        </div>
+
+        <!-- Payment Section -->
+        <div class="payment-section mt-4">
+          <h4>Adoption Fee: $50</h4>
+          <button type="button" class="btn btn-primary" id="payBtn">
+            Pay Now
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-section mt-5">
+      <div class="container text-center">
+        <p>&copy; 2024 Picku. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Payment Gateway Script -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="adopt.js"></script>
+  </body>
+</html>

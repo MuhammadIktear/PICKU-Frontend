@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #1f242b;
+  font-family: "Arial", sans-serif;
+}
+
+.view-account {
+  background: #f7f4f4;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+}
+
+.module {
+  padding: 20px;
+}
+
+.module-inner {
+  padding: 30px;
+}
+
+.side-bar {
+  padding: 20px;
+  border-right: 1px solid #eaeaea;
+}
+
+.user-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.img-profile {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.img-rounded {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.meta {
+  margin-top: 20px;
+}
+
+.meta .name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.meta .email a {
+  color: #999999;
+  text-decoration: none;
+}
+
+.meta .activity {
+  font-size: 14px;
+  color: #999999;
+}
+
+.side-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.side-menu .nav {
+  padding: 0;
+  list-style: none;
+}
+
+.side-menu .nav-item {
+  padding: 10px 20px;
+}
+
+.side-menu .nav-item .nav-link {
+  color: #333333;
+  text-decoration: none;
+}
+
+.side-menu .nav-item.active .nav-link {
+  background: #e9ecef;
+  border-radius: 5px;
+}
+
+.content-panel {
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.fieldset {
+  margin-bottom: 20px;
+}
+
+.fieldset-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.form-control-file {
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.btn {
+  border-radius: 50px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .module-inner {
+    padding: 20px;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .module-inner {
+    padding: 15px;
+  }
+
+  .btn {
+    font-size: 0.8rem;
+  }
+}

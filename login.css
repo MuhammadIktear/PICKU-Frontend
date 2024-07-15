@@ -1,0 +1,102 @@
+/* Resetting default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #1f242b;
+}
+
+/* Navigation styles */
+.navigation {
+  background: #fff;
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.menu li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.menu li a {
+  color: #000;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 20px;
+  transition: color 0.3s ease;
+}
+
+.menu li a:hover {
+  color: #ce8460;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  background: #e3e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.input-group-text {
+  background-color: #f8f9fa;
+  border: none;
+}
+
+.form-control {
+  border-left: none;
+}
+
+.input-group .form-control {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.btn-primary {
+  background-color: #1f242b;
+  border: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn-outline-primary:hover {
+  background-color: #1f242b;
+}
+
+.btn-outline-primary {
+  color: #1f242b;
+  border: 1px solid #1f242b;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.btn-outline-primary:hover {
+  background-color: #1f242b;
+  color: #fff;
+}
+
+/* Footer styles */
+.footer-section {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.footer-section p {
+  margin: 0;
+}

@@ -1,0 +1,24 @@
+.carousel-inner img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.table-borderless th,
+.table-borderless td {
+  border: none;
+}
+
+.details2-section {
+  margin-top: 50px;
+}
+.badge-success {
+  background-color: #28a745;
+}
+
+.shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-sm {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
