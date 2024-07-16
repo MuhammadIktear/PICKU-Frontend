@@ -10,13 +10,23 @@
     <!-- Navigation Bar -->
     <nav class="navigation">
       <ul class="menu">
-        <li><a href="#Home">Home</a></li>
+        <li><a href="#home">Home</a></li>
         <li><a href="#about">About Us</a></li>
         <li><a href="#pets">Adopt a Pet</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a onclick="window.location.href='login.html';" href="#pets">Login</a></li>
-        <li><a onclick="window.location.href='register.html';" href="#contact">Register</a></li>
-        li><a onclick="window.location.href='profile.html';" href="#profile">Profile</a></li>      
+        <li>
+          <a onclick="window.location.href='login.html';" href="#pets">Login</a>
+        </li>
+        <li>
+          <a onclick="window.location.href='register.html';" href="#contact"
+            >Register</a
+          >
+        </li>
+        <li>
+          <a onclick="window.location.href='profile.html';" href="#profile"
+            >Profile</a
+          >
+        </li>
       </ul>
     </nav>
 
@@ -48,36 +58,50 @@
             <label for="species">Species</label>
             <select id="species">
               <option value="">Select</option>
+              <option value="1">Dog</option>
+              <option value="2">Cat</option>
             </select>
           </div>
           <div class="filter-section">
             <label for="breeds">Breed</label>
             <select id="breeds">
               <option value="">Select</option>
+              <option value="1">Breed 1</option>
+              <option value="2">Breed 2</option>
             </select>
           </div>
           <div class="filter-section">
             <label for="colors">Color</label>
             <select id="colors">
               <option value="">Select</option>
+              <option value="1">Color 1</option>
+              <option value="2">Color 2</option>
+              <option value="3">Color 3</option>
             </select>
           </div>
           <div class="filter-section">
             <label for="sizes">Size</label>
             <select id="sizes">
               <option value="">Select</option>
+              <option value="1">Small</option>
+              <option value="2">Medium</option>
+              <option value="3">Large</option>
             </select>
           </div>
           <div class="filter-section">
             <label for="sexes">Sex</label>
             <select id="sexes">
               <option value="">Select</option>
+              <option value="1">Male</option>
+              <option value="2">Female</option>
             </select>
           </div>
           <div class="filter-section">
             <label for="statuses">Status</label>
             <select id="statuses">
               <option value="">Select</option>
+              <option value="1">Available</option>
+              <option value="2">Adopted</option>
             </select>
           </div>
         </div>
@@ -90,7 +114,62 @@
       <!-- Adopt a Pet Section -->
       <section id="pets" class="adopt-section">
         <div id="pet-grid" class="pet-grid">
-          <!-- Pet cards will be inserted here by JavaScript -->
+          <!-- Manual Pet Cards -->
+          <div class="col-3 pet-card">
+            <img
+              src="https://picku.onrender.com/media/pet_images/pexels-photo-3361739_QAb8pES.webp"
+              alt="Pichacu"
+            />
+            <h2>Pichacu</h2>
+            <p>Species: Dog</p>
+            <p>Status: Available</p>
+            <p>Rehoming Fee: 10.00$</p>
+            <a href="details.html?id=1" class="btn btn-grey">Details</a>
+          </div>
+          <div class="pet-card">
+            <img
+              src="https://picku.onrender.com/media/pet_images/5200_IDYNcG4.jpg"
+              alt="fffsasfs"
+            />
+            <h2>fffsasfs</h2>
+            <p>Species: Cat</p>
+            <p>Status: Available</p>
+            <p>Rehoming Fee: 10.00$</p>
+            <a href="details.html?id=2" class="btn btn-grey">Details</a>
+          </div>
+          <div class="col-3 pet-card">
+            <img
+              src="https://picku.onrender.com/media/pet_images/pexels-photo-3361739_QAb8pES.webp"
+              alt="Pichacu"
+            />
+            <h2>Pichacu</h2>
+            <p>Species: Dog</p>
+            <p>Status: Available</p>
+            <p>Rehoming Fee: 10.00$</p>
+            <a href="details.html?id=1" class="btn btn-grey">Details</a>
+          </div>          
+          <div class="pet-card">
+            <img
+              src="https://picku.onrender.com/media/pet_images/5200_evAV9dc.jpg"
+              alt="fgfdg"
+            />
+            <h2>fgfdg</h2>
+            <p>Species: Dog</p>
+            <p>Status: Available</p>
+            <p>Rehoming Fee: 10.00$</p>
+            <a href="details.html?id=3" class="btn btn-grey">Details</a>
+          </div>
+          <div class="pet-card">
+            <img
+              src="https://picku.onrender.com/media/pet_images/5200_evAV9dc.jpg"
+              alt="fgfdg"
+            />
+            <h2>fgfdg</h2>
+            <p>Species: Dog</p>
+            <p>Status: Available</p>
+            <p>Rehoming Fee: 10.00$</p>
+            <a href="details.html?id=3" class="btn btn-grey">Details</a>
+          </div>          
         </div>
       </section>
     </div>

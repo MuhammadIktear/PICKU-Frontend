@@ -300,7 +300,7 @@ a.btn {
 
 /* Adopt a pet section styles */
 .adopt-section {
-  padding: 100px 0;
+  padding: 50px 0;
   background: #f5f5f5;
   text-align: center;
 }
@@ -310,85 +310,64 @@ a.btn {
 }
 
 .pet-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
+  display: flex; /* Add display: flex; */
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start;
-}
-
-@media (min-width: 768px) {
-  .pet-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (min-width: 992px) {
-  .pet-grid {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+  gap: 20px;
 }
 
 .pet-card {
-  background: #fff;
-  padding: 20px;
-  border-radius: 15px;
-  text-align: center;
-  transition: transform 0.3s;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
+  display: flex; /* Add display: flex; */
+  flex-direction: column; /* Add flex-direction: column; */
+  align-items: center; /* Center items horizontally */
   justify-content: space-between;
-  height: 100%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pet-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .pet-card img {
-  border-radius: 15px;
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
-.pet-card h3 {
-  margin-top: 15px;
-  margin-bottom: 10px;
-  font-size: 1.5em;
-  color: #333;
+.pet-card h2 {
+  font-size: 1.5rem;
+  color: #333333;
+  margin: 15px 0;
 }
 
 .pet-card p {
-  margin-bottom: 10px;
-  color: #777;
+  color: #666666;
+  margin: 5px 0;
 }
 
-.pet-card .btn-grey {
-  background-color: #2b2a2a;
-  color: #fff;
-  border-radius: 10px;
+.pet-card .btn {
+  display: inline-block;
+  margin: 15px 0;
   padding: 10px 20px;
+  color: #ffffff;
+  background-color: #333333;
+  border: none;
+  border-radius: 5px;
   text-decoration: none;
+  font-size: 1rem;
   transition: background-color 0.3s;
 }
 
-.pet-card .btn-grey:hover {
-  background-color: #ffffff;
+.pet-card .btn:hover {
+  background-color: #555555;
 }
-
-.card__footer {
-  margin-top: 20px;
-}
-
-.user {
-  display: flex;
-  align-items: center;
-}
-
-.user__image {
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-}
-
 .user__info h5 {
   margin: 0;
   font-size: 1em;
@@ -398,6 +377,7 @@ a.btn {
 .user__info small {
   color: #777;
 }
+
 /* Contact section styles */
 .contact-section {
   padding: 100px 0;
@@ -425,40 +405,33 @@ a.btn {
 }
 
 .form-control {
-  width: calc(100% - 24px);
-  padding: 12px;
-  margin-bottom: 20px;
+  width: calc(100% - 20px);
+  margin: 10px;
+  padding: 15px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
   font-size: 16px;
-  transition: border-color 0.3s ease;
 }
 
-.form-control:focus {
-  outline: none;
-  border-color: #ce8460;
+textarea.form-control {
+  height: 150px;
 }
 
-.form-control.textarea {
-  height: 120px;
-  resize: none;
-}
-
-.contact-section button[type="submit"] {
-  background-color: #ce8460;
+.contact-section .btn {
+  width: calc(50% - 20px);
+  margin: 10px;
+  padding: 15px;
   border: none;
-  color: #fff;
+  border-radius: 5px;
   font-size: 16px;
-  padding: 12px 24px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  color: #fff;
+  background-color: #333;
+  transition: background-color 0.3s;
 }
 
-.contact-section button[type="submit"]:hover {
-  background-color: #000;
+.contact-section .btn:hover {
+  background-color: #555;
 }
-
 /* Footer styles */
 .footer-section {
   background: #111;
