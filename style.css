@@ -76,6 +76,30 @@ h6,
   line-height: 22px;
 }
 
+/* Container */
+.container {
+  margin: auto;
+  width: 90%; /* Adjust as needed */
+  max-width: 75%; /* Maximum width for large screens */
+  padding: 0 15px;
+}
+
+/* Flex container for filters and pet list */
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.flex .dropdown {
+  flex: 1 1 auto;
+  max-width: calc(20% - 10px); /* Adjust based on the number of dropdowns */
+}
+
 /* Button styles */
 .btn {
   border-radius: 0px;
@@ -83,14 +107,12 @@ h6,
   font-weight: 600;
   text-transform: uppercase;
   color: #fff;
+  margin: 10px;
   transition: 350ms;
   letter-spacing: 1px;
-  font-size: 13px;
+  font-size: 12px;
   border: 1px solid transparent;
   background-color: #ce8460;
-}
-a.btn {
-  text-decoration: none; /* Remove the underline */
 }
 
 .btn:hover {
@@ -108,23 +130,6 @@ a.btn {
   background: transparent;
   border-color: #ce8460;
   color: #000;
-}
-
-/* Section styles */
-.section-padding {
-  padding: 70px 0;
-  position: relative;
-}
-
-.bg-grey {
-  background: #f8efea;
-}
-
-/* Container styles */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
 }
 
 /* Navigation styles */
@@ -160,100 +165,43 @@ a.btn {
   color: #ce8460;
 }
 
-/* Container */
-.container_filter {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  padding: 20px;
-  margin-left: 10%;
-  margin-right: 10%;
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-@media (min-width: 768px) {
-  .container_filter {
-    grid-template-columns: 1fr 2fr;
-  }
-}
-
-@media (min-width: 992px) {
-  .container_filter {
-    grid-template-columns: 1fr 3fr;
-  }
-}
-
-/* Filter container */
-.filter-container {
-  background-color: #fff;
-  color: black;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 350px;
-  max-height: 800px;
-}
-
-.filter-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.filter-section {
-  margin-bottom: 15px;
-}
-
-.filter-section label {
-  display: block;
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.filter-section select,
-.filter-section input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.3s ease;
-}
-
-.filter-section select:focus,
-.filter-section input:focus {
-  border-color: #666;
-}
-
-.filter-group .filter-button,
-.filter-group .reset-button {
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 14px;
+.dropbtn {
+  background-color: #3498db; /* Blue button */
+  color: #fff;
+  border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 10px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 100px;
+  height: 50px;
 }
 
-.filter-group .filter-button {
-  background-color: #5e3aee;
-  color: white;
-  border: none;
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
-.filter-group .filter-button:hover {
-  background-color: #4b32c3;
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
-.filter-group .reset-button {
-  background-color: white;
-  color: #5e3aee;
-  border: 1px solid #5e3aee;
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
 }
 
-.filter-group .reset-button:hover {
-  background-color: #5e3aee;
-  color: white;
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 /* Hero section styles */
@@ -310,16 +258,31 @@ a.btn {
 }
 
 .pet-grid {
-  display: flex; /* Add display: flex; */
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
+  margin: 0 auto;
+  padding: 0 15px; /* Added padding for better spacing */
+}
+
+.search {
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  max-width: 300px; /* Adjust as needed */
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .pet-card {
-  display: flex; /* Add display: flex; */
-  flex-direction: column; /* Add flex-direction: column; */
-  align-items: center; /* Center items horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   background-color: #ffffff;
   border-radius: 10px;
@@ -367,15 +330,6 @@ a.btn {
 
 .pet-card .btn:hover {
   background-color: #555555;
-}
-.user__info h5 {
-  margin: 0;
-  font-size: 1em;
-  color: #333;
-}
-
-.user__info small {
-  color: #777;
 }
 
 /* Contact section styles */
@@ -432,6 +386,7 @@ textarea.form-control {
 .contact-section .btn:hover {
   background-color: #555;
 }
+
 /* Footer styles */
 .footer-section {
   background: #111;
@@ -442,4 +397,76 @@ textarea.form-control {
 
 .footer-section p {
   margin: 0;
+}
+
+/* Pagination styles */
+.pagination {
+  margin-top: 20px;
+}
+
+.pagination .page-item {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.pagination .page-link {
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  padding: 6px 12px;
+  transition: all 0.3s ease;
+}
+
+.pagination .page-link:hover {
+  background-color: #f0f0f0;
+}
+
+.pagination .page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.pagination .page-item.disabled .page-link {
+  pointer-events: none;
+  color: #6c757d;
+  background-color: #fff;
+  border-color: #dee2e6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    width: 95%; /* Adjust for smaller screens */
+  }
+
+  .flex .dropdown {
+    max-width: 100%; /* Full width for dropdowns on small screens */
+  }
+
+  .search {
+    width: 100%;
+    max-width: 100%; /* Full width for search input */
+  }
+
+  .hero-section {
+    padding: 100px 0;
+  }
+
+  .about-section {
+    padding: 70px 0;
+  }
+
+  .adopt-section {
+    padding: 30px 0;
+  }
+
+  .contact-section {
+    padding: 70px 0;
+  }
+
+  .pagination {
+    text-align: center;
+  }
 }

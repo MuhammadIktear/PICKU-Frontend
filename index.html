@@ -14,19 +14,9 @@
         <li><a href="#about">About Us</a></li>
         <li><a href="#pets">Adopt a Pet</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li>
-          <a onclick="window.location.href='login.html';" href="#pets">Login</a>
-        </li>
-        <li>
-          <a onclick="window.location.href='register.html';" href="#contact"
-            >Register</a
-          >
-        </li>
-        <li>
-          <a onclick="window.location.href='profile.html';" href="#profile"
-            >Profile</a
-          >
-        </li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="profile.html">Profile</a></li>
       </ul>
     </nav>
 
@@ -50,129 +40,56 @@
       </div>
     </section>
 
-    <div class="container_filter">
+    <!-- Filters and Pet List -->
       <!-- Filters -->
-      <div class="filter-container">
-        <div class="filter-group">
-          <div class="filter-section">
-            <label for="species">Species</label>
-            <select id="species">
-              <option value="">Select</option>
-              <option value="1">Dog</option>
-              <option value="2">Cat</option>
-            </select>
+       <div class="container">
+        <div class="flex">
+          <div>
+            <div class="dropdown">
+              <button class="btn dropbtn">Species &dtrif;</button>
+              <div class="dropdown-content" id="species-dropdown"></div>
+            </div>
+            <div class="dropdown">
+              <button class="btn dropbtn">Sex &dtrif;</button>
+              <div class="dropdown-content" id="sex-dropdown"></div>
+            </div>
+            <div class="dropdown">
+              <button class="btn dropbtn">Color &dtrif;</button>
+              <div class="dropdown-content" id="color-dropdown"></div>
+            </div>
+            <div class="dropdown">
+              <button class="btn dropbtn">Breed &dtrif;</button>
+              <div class="dropdown-content" id="breed-dropdown"></div>
+            </div>
+            <div class="dropdown">
+              <button class="btn dropbtn">Size &dtrif;</button>
+              <div class="dropdown-content" id="size-dropdown"></div>
+            </div>
+            <div class="dropdown">
+              <button class="btn dropbtn">Status &dtrif;</button>
+              <div class="dropdown-content" id="status-dropdown"></div>
+            </div>
           </div>
-          <div class="filter-section">
-            <label for="breeds">Breed</label>
-            <select id="breeds">
-              <option value="">Select</option>
-              <option value="1">Breed 1</option>
-              <option value="2">Breed 2</option>
-            </select>
-          </div>
-          <div class="filter-section">
-            <label for="colors">Color</label>
-            <select id="colors">
-              <option value="">Select</option>
-              <option value="1">Color 1</option>
-              <option value="2">Color 2</option>
-              <option value="3">Color 3</option>
-            </select>
-          </div>
-          <div class="filter-section">
-            <label for="sizes">Size</label>
-            <select id="sizes">
-              <option value="">Select</option>
-              <option value="1">Small</option>
-              <option value="2">Medium</option>
-              <option value="3">Large</option>
-            </select>
-          </div>
-          <div class="filter-section">
-            <label for="sexes">Sex</label>
-            <select id="sexes">
-              <option value="">Select</option>
-              <option value="1">Male</option>
-              <option value="2">Female</option>
-            </select>
-          </div>
-          <div class="filter-section">
-            <label for="statuses">Status</label>
-            <select id="statuses">
-              <option value="">Select</option>
-              <option value="1">Available</option>
-              <option value="2">Adopted</option>
-            </select>
-          </div>
+
+          <input
+          type="text"
+          class="search"
+          id="search"
+          placeholder="Search..."
+          onkeyup="filterPets()"
+        />
         </div>
-        <div class="filter-group">
-          <button class="reset-button">Reset</button>
-          <button class="filter-button">Search</button>
+
+        <div>
+          <section id="pets" class="adopt-section">
+            <div id="pet-grid" class="pet-grid"></div>
+            <div id="pagination-controls" class="pagination-controls"></div>
+          </section>
         </div>
-      </div>
+
+       </div>
 
       <!-- Adopt a Pet Section -->
-      <section id="pets" class="adopt-section">
-        <div id="pet-grid" class="pet-grid">
-          <!-- Manual Pet Cards -->
-          <div class="col-3 pet-card">
-            <img
-              src="https://picku.onrender.com/media/pet_images/pexels-photo-3361739_QAb8pES.webp"
-              alt="Pichacu"
-            />
-            <h2>Pichacu</h2>
-            <p>Species: Dog</p>
-            <p>Status: Available</p>
-            <p>Rehoming Fee: 10.00$</p>
-            <a href="details.html?id=1" class="btn btn-grey">Details</a>
-          </div>
-          <div class="pet-card">
-            <img
-              src="https://picku.onrender.com/media/pet_images/5200_IDYNcG4.jpg"
-              alt="fffsasfs"
-            />
-            <h2>fffsasfs</h2>
-            <p>Species: Cat</p>
-            <p>Status: Available</p>
-            <p>Rehoming Fee: 10.00$</p>
-            <a href="details.html?id=2" class="btn btn-grey">Details</a>
-          </div>
-          <div class="col-3 pet-card">
-            <img
-              src="https://picku.onrender.com/media/pet_images/pexels-photo-3361739_QAb8pES.webp"
-              alt="Pichacu"
-            />
-            <h2>Pichacu</h2>
-            <p>Species: Dog</p>
-            <p>Status: Available</p>
-            <p>Rehoming Fee: 10.00$</p>
-            <a href="details.html?id=1" class="btn btn-grey">Details</a>
-          </div>          
-          <div class="pet-card">
-            <img
-              src="https://picku.onrender.com/media/pet_images/5200_evAV9dc.jpg"
-              alt="fgfdg"
-            />
-            <h2>fgfdg</h2>
-            <p>Species: Dog</p>
-            <p>Status: Available</p>
-            <p>Rehoming Fee: 10.00$</p>
-            <a href="details.html?id=3" class="btn btn-grey">Details</a>
-          </div>
-          <div class="pet-card">
-            <img
-              src="https://picku.onrender.com/media/pet_images/5200_evAV9dc.jpg"
-              alt="fgfdg"
-            />
-            <h2>fgfdg</h2>
-            <p>Species: Dog</p>
-            <p>Status: Available</p>
-            <p>Rehoming Fee: 10.00$</p>
-            <a href="details.html?id=3" class="btn btn-grey">Details</a>
-          </div>          
-        </div>
-      </section>
-    </div>
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
@@ -211,6 +128,7 @@
         <p>&copy; 2024 Picku. All rights reserved.</p>
       </div>
     </footer>
+
     <script src="script.js"></script>
   </body>
 </html>

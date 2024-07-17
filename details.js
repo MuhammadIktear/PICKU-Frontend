@@ -1,66 +1,41 @@
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const petId = urlParams.get("id");
+  const petId = urlParams.get("petId");
 
   if (petId) {
-    const pet = await fetchData(`https://picku.onrender.com/pets/${petId}/`);
-    if (pet) {
-      displayPetDetails(pet);
-    }
-  } else {
-    console.error("Pet ID not found in the URL");
+    loadPetDetails(petId);
   }
 });
 
-const fetchData = async (url) => {
-  try {
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+const apiUrl = "https://pet-adopt-website-picku.onrender.com/pets/petlist/";
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+function loadPetDetails(petId) {
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      const pet = data.results.find(p => p.id == petId);
+      displayPetDetails(pet);
+    })
+    .catch(error => console.error('Error fetching pet details:', error));
+}
 
-    const data = await response.json();
-    console.log(`Fetched from ${url}`, data);
-    return data;
-  } catch (error) {
-    console.error(`Error fetching from ${url}`, error);
-    const errorMessageElement = document.getElementById("error-message");
-    if (errorMessageElement) {
-      errorMessageElement.textContent = "Error fetching data. Please try again.";
-    }
-    return null;
-  }
-};
-
-const displayPetDetails = (pet) => {
+function displayPetDetails(pet) {
   if (pet) {
+    document.getElementById("pet-image").src = pet.image;
     document.getElementById("pet-name").textContent = pet.name;
-    document.getElementById("pet-status").textContent = pet.status.name; // Access the name property
+    document.getElementById("pet-status").textContent = pet.status;
     document.getElementById("pet-description").textContent = pet.details;
 
-    const petInfo = `
-        <tr><th>Breed</th><td>${pet.breed.name}</td></tr>
-        <tr><th>Color</th><td>${pet.color.name}</td></tr>
-        <tr><th>Age</th><td>${pet.age} years old</td></tr>
-        <tr><th>Sex</th><td>${pet.sex.name}</td></tr>
-        <tr><th>Arrived Date</th><td>${new Date(pet.created_at).toLocaleDateString()}</td></tr>
-        <tr><th>Size</th><td>${pet.size.name}</td></tr>
-        <tr><th>Location</th><td>${pet.location}</td></tr>
-        <tr><th>Rehoming Fee</th><td>£${pet.rehoming_fee}</td></tr>
-      `;
-    document.getElementById("pet-info").innerHTML = petInfo;
-
-    const imageUrl = `https://picku.onrender.com${pet.image}`;
-    const petImage = document.getElementById("pet-image");
-    petImage.src = imageUrl;
-    petImage.alt = pet.name;
+    const petInfo = document.getElementById("pet-info");
+    petInfo.innerHTML = `
+      <tr><td>Species</td><td>${pet.species.join(', ')}</td></tr>
+      <tr><td>Breed</td><td>${pet.breed.join(', ')}</td></tr>
+      <tr><td>Color</td><td>${pet.color.join(', ')}</td></tr>
+      <tr><td>Size</td><td>${pet.size.join(', ')}</td></tr>
+      <tr><td>Sex</td><td>${pet.sex.join(', ')}</td></tr>
+      <tr><td>Rehoming Fee</td><td>$${pet.rehoming_fee}</td></tr>
+    `;
   } else {
-    console.error("Pet data is missing");
+    console.error('Pet not found');
   }
-};
+}
