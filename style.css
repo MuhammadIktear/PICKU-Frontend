@@ -243,10 +243,14 @@ h6,
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
+<<<<<<< HEAD
   margin: 0 auto;
   padding: 0 15px;  
   min-width: 30px;
   min-height: 50px;
+=======
+  margin: 3%;
+>>>>>>> e141730e70e15251eee69575fe9101cfabb77a6f
 }
 
 .pet-card {
