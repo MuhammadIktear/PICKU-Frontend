@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const userApiUrl = `https://pet-adopt-website-picku.onrender.com/user/list/${userId}/`;
   const profileApiUrl = `https://pet-adopt-website-picku.onrender.com/user/UserProfileDetail/${userId}/`;
-
   function fetchUserData() {
     fetch(userApiUrl)
       .then(response => response.json())
@@ -126,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
           userDiv.querySelector(`#creator-image-${pet.created_by}`).src = user.image || 'default-image-url'; 
           const creatorName = userDiv.querySelector(`#creator-name-${pet.created_by}`);
           creatorName.textContent = user.username || 'No Username';
-          creatorName.href = `profile.html?id=${pet.created_by}`; 
+          creatorName.onclick = () => window.location.href = `profile.html?id=${pet.created_by}`; 
         })
         .catch((error) => {
           console.error("Error loading user information:", error);
@@ -144,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (currentPage > 1) {
         const prevItem = document.createElement('li');
         prevItem.classList.add('page-item');
-        prevItem.innerHTML = `<a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a>`;
+        prevItem.innerHTML = `<a class="page-link" href="#" data-page="${currentPage - 1}" onclick="window.location.href='#'">Previous</a>`;
         pagination.appendChild(prevItem);
       }
 
@@ -249,13 +248,12 @@ document.addEventListener('DOMContentLoaded', function () {
           img.src = pet.image;
           img.alt = pet.name;
           img.style.cursor = "pointer"; 
-          
-          // Wrap the image with a clickable link
-          const link = document.createElement("a");
-          link.href = `details.html?id=${pet.id}`;
-          link.appendChild(img);
+
+const link = document.createElement("a");
+link.onclick = () => window.location.href = `details.html?id=${pet.id}`;
+link.appendChild(img);
   
-          div.appendChild(link); // Add the link (with image) to the review card
+          div.appendChild(link); 
   
           div.innerHTML += `
             <p style="color:dark">${review.body}</p>
