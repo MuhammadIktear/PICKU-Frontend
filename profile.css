@@ -28,7 +28,7 @@ body {
 .profile {
   width: 150px;
   height: 150px;
-  overflow: hidden;
+
 }
 
 .profile img {
@@ -64,10 +64,9 @@ body {
   height: 100%;
 }
 
-.pet-card img {
-  border-radius: 15px;
+.card-img-top {
   max-width: 100%;
-  height: auto;
+  max-height: 300px;
 }
 
 .pet-card h3 {
@@ -149,7 +148,10 @@ body {
   .profile-head {
     transform: translateY(4rem);
   }
-
+  .card-img-top {
+    max-width: 100%;
+    max-height: 250 px;
+  }
   .media-body {
     text-align: center;
   }

@@ -5,12 +5,8 @@
 }
 
 body {
-  background: #ffffff;
+  background: #eee8e8;
   font-family: "Arial", sans-serif;
-}
-
-.container {
-  margin-top: 50px;
 }
 
 .card {
@@ -63,4 +59,18 @@ body {
   .btn {
     font-size: 0.8rem;
   }
+}
+
+
+/* Footer styles */
+.footer-section {
+  margin-top: 150px;
+  background: #ffffff;
+  color: #000000;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.footer-section p {
+  margin: 0;
 }

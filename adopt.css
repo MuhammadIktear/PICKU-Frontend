@@ -1,4 +1,4 @@
-/* Basic styling for the adopt page */
+
 body {
   font-family: Arial, sans-serif;
 }
@@ -33,14 +33,4 @@ body {
 
 .payment-section {
   text-align: center;
-}
-
-.footer-section {
-  background-color: #343a40;
-  color: #fff;
-  padding: 1rem 0;
-}
-
-.footer-section p {
-  margin: 0;
 }

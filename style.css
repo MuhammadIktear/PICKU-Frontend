@@ -9,16 +9,13 @@
 body,
 p {
   font-family: "Open Sans", sans-serif;
-  line-height: 26px;
+  line-height: 25px;
   font-size: 16px;
   text-rendering: optimizeLegibility;
   color: #fff9f9;
   font-weight: 400;
 }
 
-body {
-  background: #1f242b;
-}
 
 /* Heading styles */
 h1,
@@ -78,10 +75,10 @@ h6,
 
 /* Container */
 .container {
-  margin: auto;
   width: 90%; /* Adjust as needed */
   max-width: 75%; /* Maximum width for large screens */
   padding: 0 15px;
+  margin: auto;
 }
 
 /* Flex container for filters and pet list */
@@ -120,50 +117,6 @@ h6,
   border-color: #000;
 }
 
-.btn.btn-grey {
-  background: #ce8460;
-  border-color: #ce8460;
-  color: #fff;
-}
-
-.btn.btn-grey:hover {
-  background: transparent;
-  border-color: #ce8460;
-  color: #000;
-}
-
-/* Navigation styles */
-.navigation {
-  background: #fff;
-  padding: 20px 0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.menu {
-  list-style: none;
-  padding: 0;
-  text-align: center;
-}
-
-.menu li {
-  display: inline-block;
-  margin-right: 20px;
-}
-
-.menu li a {
-  color: #000;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 10px 20px;
-  transition: color 0.3s ease;
-}
-
-.menu li a:hover {
-  color: #ce8460;
-}
 
 /* Dropdown styles */
 .dropdown {
@@ -245,6 +198,34 @@ h6,
   max-width: 800px;
   margin: 0 auto;
 }
+.search {
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  max-width: 300px; /* Adjust as needed */
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+
+      .creator-info {
+        display: flex;
+        align-items: center;
+        margin: 16px 0;
+      }
+      
+      .creator-image {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 16px;
+      }
+
 
 /* Adopt a pet section styles */
 .adopt-section {
@@ -263,34 +244,15 @@ h6,
   justify-content: center;
   gap: 30px;
   margin: 0 auto;
-  padding: 0 15px; /* Added padding for better spacing */
-}
-
-.search {
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  cursor: pointer;
-  width: 100%;
-  max-width: 300px; /* Adjust as needed */
-  height: 50px;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  padding: 0 15px;  
+  min-width: 30px;
+  min-height: 50px;
 }
 
 .pet-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  width: 250px;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s ease;
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
+
 }
 
 .pet-card:hover {
@@ -329,7 +291,32 @@ h6,
 }
 
 .pet-card .btn:hover {
-  background-color: #555555;
+  background-color: #ffffff;
+}
+
+/* Responsive design for different screen sizes */
+@media (min-width: 992px) {
+  /* Large screens: 3 pet cards per row */
+  .pet-card {
+    flex: 1 1 calc(33.333% - 30px); /* 3 cards per row, with gap considered */
+    max-width: calc(33.333% - 30px);
+  }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+  /* Medium screens: 2 pet cards per row */
+  .pet-card {
+    flex: 1 1 calc(50% - 30px); /* 2 cards per row, with gap considered */
+    max-width: calc(50% - 30px);
+  }
+}
+
+@media (max-width: 767px) {
+  /* Small screens: 1 pet card per row */
+  .pet-card {
+    flex: 1 1 100%; /* 1 card per row */
+    max-width: 100%;
+  }
 }
 
 /* Contact section styles */
@@ -387,17 +374,6 @@ textarea.form-control {
   background-color: #555;
 }
 
-/* Footer styles */
-.footer-section {
-  background: #111;
-  color: #fff;
-  text-align: center;
-  padding: 20px 0;
-}
-
-.footer-section p {
-  margin: 0;
-}
 
 /* Pagination styles */
 .pagination {
@@ -470,3 +446,50 @@ textarea.form-control {
     text-align: center;
   }
 }
+#noData{
+  display: none;
+}
+
+.nodata{
+  display: none;
+}
+
+#spinner{
+  display: none;
+}
+
+.review-card {
+  background-color: #ffffff; 
+  border: 1px solid #ddd; 
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  width: 250px;
+  flex: 0 0 auto;
+}
+.review-card img{
+  width: 70px;
+  height: 70px;
+  border-radius:50px;
+
+}
+.review-card h4 {
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.review-card p {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+.review-card small {
+  display: block;
+  color: #999;
+  font-size: 0.8em;
+}
+

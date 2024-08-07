@@ -1,4 +1,4 @@
-/* Resetting default margin and padding */
+
 * {
   margin: 0;
   padding: 0;
@@ -8,7 +8,6 @@ body {
   background: #1f242b;
 }
 
-/* Navigation styles */
 .navigation {
   background: #fff;
   padding: 20px 0;
