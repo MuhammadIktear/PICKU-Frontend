@@ -62,7 +62,7 @@ async function fetchAndDisplayPets() {
             displayPets(adoptedData.results, "adoptedPetsContainer", false, lookupData);
             displayPets(sellingData.results, "sellingRescuedPetsContainer", true, lookupData);
         }
-        else{
+        else {
             const adoptedPetsAPI = `https://pet-adopt-website-picku.onrender.com/pets/petlist/?adopted_by=${fetchId}`;
             const adoptedResponse = await fetch(adoptedPetsAPI);
             const adoptedData = await adoptedResponse.json();
@@ -81,6 +81,8 @@ async function fetchAndDisplayPets() {
 
     } catch (error) {
         console.error("Error fetching pets:", error);
+        document.getElementById("adoptedPetsContainer").innerHTML = 'Error loading adopted pets.';
+        document.getElementById("sellingRescuedPetsContainer").innerHTML = 'Error loading selling/rescued pets.';
     }
 }
 
@@ -97,13 +99,17 @@ function displayPets(pets, containerId, canEditDelete, lookupData) {
     const fetchId = new URLSearchParams(window.location.search).get("id");
     const userId = localStorage.getItem("user_id");
 
+    if (pets.length === 0) {
+        container.innerHTML = '<h5 style="text-align: center;">No data found!</h5>';
+        return;
+    }
     pets.forEach((pet) => {
         const petStatus = lookupData.status.find(status => status.id === pet.status);
         let detailsButton = "";
         let editDeleteButtons = "";
 
         if (!fetchId || fetchId === userId) {
-            if (canEditDelete){
+            if (canEditDelete) {
                 editDeleteButtons = `
                 <a href="edit.html?id=${pet.id}" class="btn btn-dark btn-outline-white btn-sm">Edit</a>
                 <a href="delete_pet.html?id=${pet.id}" class="btn btn-dark btn-outline-white btn-sm">Delete</a>
@@ -113,12 +119,12 @@ function displayPets(pets, containerId, canEditDelete, lookupData) {
                 detailsButton = `
                       <a href="details.html?id=${pet.id}" class="btn btn-dark btn-outline-white btn-sm">Details</a>
                   `;
-              }             
+            }             
 
         } else {
-                detailsButton = `
-                      <a href="details.html?id=${pet.id}" class="btn btn-dark btn-outline-white btn-sm">Details</a>
-                  `;
+            detailsButton = `
+                  <a href="details.html?id=${pet.id}" class="btn btn-dark btn-outline-white btn-sm">Details</a>
+              `;
         }
 
         const petCard = `
