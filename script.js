@@ -258,6 +258,7 @@ document.addEventListener('DOMContentLoaded', function () {
           div.appendChild(link); 
   
           div.innerHTML += `
+            <h4>${pet.name}</h4>
             <p style="color:dark">${review.body}</p>
             <small>Reviewed by ${review.author_username}</small> on <small>${new Date(review.created_at).toLocaleDateString()}</small>
           `;
