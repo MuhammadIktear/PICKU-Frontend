@@ -110,10 +110,10 @@ document.addEventListener('DOMContentLoaded', function () {
           <div class="creator-details">
             <div class="d-flex">
               <div>
-                <p class="p-2">Created by</p>
+                <p class="p-1"><small>Created by</small></p>
               </div>
-              <div style="margin-top: 12px">
-                <a class="p-1" id="creator-name-${pet.created_by}" class="creator-name" style="cursor: pointer;" onmouseover="this.style.color='black';" onmouseout="this.style.color='blue';">Creator Name</a>
+              <div style="margin-top: 9px">
+                <a class="p-1" id="creator-name-${pet.created_by}" class="creator-name " style="cursor: pointer; color:#ce8460; " onmouseover="this.style.color='black';" onmouseout="this.style.color='#ce8460';">Creator Name</a>
               </div>
             </div>
           </div>
@@ -147,14 +147,14 @@ document.addEventListener('DOMContentLoaded', function () {
       if (currentPage > 1) {
         const prevItem = document.createElement('li');
         prevItem.classList.add('page-item');
-        prevItem.innerHTML = `<a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a>`;
+        prevItem.innerHTML = `<a class="text-white bg-dark p-3 page-link" href="#" data-page="${currentPage - 1}">Previous</a>`;
         pagination.appendChild(prevItem);
       }
 
       for (let i = 1; i <= pageCount; i++) {
         const pageItem = document.createElement('li');
         pageItem.classList.add('page-item');
-        pageItem.innerHTML = `<a class="page-link" href="#" data-page="${i}">${i}</a>`;
+        pageItem.innerHTML = `<a class="text-dark bg-white p-3 page-link" href="#" data-page="${i}">${i}</a>`;
         if (i === currentPage) {
           pageItem.classList.add('active');
         }
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (currentPage < pageCount) {
         const nextItem = document.createElement('li');
         nextItem.classList.add('page-item');
-        nextItem.innerHTML = `<a class="page-link" href="#" data-page="${currentPage + 1}">Next</a>`;
+        nextItem.innerHTML = `<a class="text-white bg-dark p-3 page-link" href="#" data-page="${currentPage + 1}">Next</a>`;
         pagination.appendChild(nextItem);
       }
     }
@@ -259,9 +259,9 @@ document.addEventListener('DOMContentLoaded', function () {
           div.appendChild(link); 
   
           div.innerHTML += `
-            <h4>${pet.name}</h4>
+            <h4 class="mt-1">${pet.name}</h4>
             <p style="color:dark">${review.body}</p>
-            <small>Reviewed by ${review.author_username}</small> on <small>${new Date(review.created_at).toLocaleDateString()}</small>
+            <small style="color:#ce8460";>Reviewed by ${review.author_username}</small> on <small style="color:#ce8460";>${new Date(review.created_at).toLocaleDateString()}</small>
           `;
   
           parent.appendChild(div);
