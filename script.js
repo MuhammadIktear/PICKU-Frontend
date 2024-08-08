@@ -251,9 +251,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
           // Wrap the image with a clickable link
           const link = document.createElement("a");
-          link.onclick = () => window.location.href = `details.html?id=${pet.id}`;
+          link.href = `details.html?id=${pet.id}`;
           link.appendChild(img);
-
+          
           div.appendChild(link); 
   
           div.innerHTML += `
