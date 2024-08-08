@@ -114,7 +114,7 @@
             <h2 class="text-primary">Welcome</h2>
             <p>Sign up to create a new rescue account</p>
             <div id="alert-container"></div>
-            <form action="" onsubmit="handleRegistration(event)" id="signup-form">           
+            <form action="" id="signup-form">           
               <div class="form-group">
                 <label for="username" class="sr-only"></label>
                 <input type="text" class="form-control" id="username" placeholder="Username" name="username" required />
@@ -140,7 +140,7 @@
                 <input type="password" class="form-control" id="confirm-password" placeholder="Confirm Password" name="confirmpass" required />
               </div>
               <br>
-              <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+              <button type="submit" onsubmit="handleRegistration(event)" class="btn btn-primary btn-block">Sign Up</button>
             </form>
           </div>
         </div>

@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       alertContainer.appendChild(alertElement);
   };
   const getValue = (id) => document.getElementById(id)?.value.trim();
-  const handleRegistration = async (event) => {
+  async function handleRegistration(event){
       event.preventDefault();
       const username = getValue("username");
       const first_name = getValue("first-name");
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
   };
 
-  const handleLogin = async (event) => {
+  async function handleLogin(event){
       event.preventDefault();
 
       const username = getValue("login-username");

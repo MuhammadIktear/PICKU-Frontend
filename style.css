@@ -460,6 +460,7 @@ textarea.form-control {
 
 .review-card {
   border: 1px solid #ddd; 
+  background-color: #ffffff;
   border-radius: 8px;
   padding: 15px;
   margin: 10px;

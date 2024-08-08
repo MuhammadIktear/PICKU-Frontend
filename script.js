@@ -249,10 +249,11 @@ document.addEventListener('DOMContentLoaded', function () {
           img.alt = pet.name;
           img.style.cursor = "pointer"; 
 
-const link = document.createElement("a");
-link.onclick = () => window.location.href = `details.html?id=${pet.id}`;
-link.appendChild(img);
-  
+          // Wrap the image with a clickable link
+          const link = document.createElement("a");
+          link.onclick = () => window.location.href = `details.html?id=${pet.id}`;
+          link.appendChild(img);
+
           div.appendChild(link); 
   
           div.innerHTML += `
