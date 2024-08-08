@@ -56,19 +56,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Load pet data and display it
   function loadPets(page = 1, search = '') {
-    fetch(`https://pet-adopt-website-picku.onrender.com/pets/petlist/?page=${page}&page_size=${pageSize}&search=${encodeURIComponent(search)}`)
+    document.getElementById("spinner").style.display = "block";
+    fetch(`https://pet-adopt-website-picku.onrender.com/pets/petlist/?page=${page}&page_size=${pageSize}&search=${encodeURIComponent(search)}`)    
       .then((res) => res.json())
       .then((data) => {
         const parent = document.getElementById("pet-grid");
         parent.innerHTML = '';
 
-        if (data.results.length > 0) {
+        if (data.results.length > 0) {          
+          document.getElementById("spinner").style.display = "none";
           document.getElementById("nodata").style.display = "none";
           displayPets(data.results);
           updatePagination(data.count, page);
-        } else {
+        } else {          
+          document.getElementById("spinner").style.display = "none";
           document.getElementById("nodata").style.display = "block";
-          document.getElementById("pagination").innerHTML = ''; // Clear pagination if no data
+          document.getElementById("pagination").innerHTML = ''; 
         }
       })
       .catch((error) => {
@@ -217,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function () {
       loadReview();
     });
   }
-  const loadReview = () => {
+  const loadReview = () => {    
     fetch("https://pet-adopt-website-picku.onrender.com/pets/petlist/")
       .then((res) => {
         if (!res.ok) {
@@ -249,8 +252,6 @@ document.addEventListener('DOMContentLoaded', function () {
           img.src = pet.image;
           img.alt = pet.name;
           img.style.cursor = "pointer"; 
-
-          // Wrap the image with a clickable link
           const link = document.createElement("a");
           link.href = `details.html?id=${pet.id}`;
           link.appendChild(img);
