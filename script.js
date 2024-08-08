@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const userApiUrl = `https://pet-adopt-website-picku.onrender.com/user/list/${userId}/`;
   const profileApiUrl = `https://pet-adopt-website-picku.onrender.com/user/UserProfileDetail/${userId}/`;
+
+  // Function to fetch and display user data
   function fetchUserData() {
     fetch(userApiUrl)
       .then(response => response.json())
@@ -19,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(response => response.json())
       .then(profile => {
         const profileImage = document.getElementById('profile-image');
-        profileImage.src = profile.image || 'default-image-url';
+        profileImage.src = profile.image || 'default-image-url'; // Provide a default image URL
         profileImage.alt = profile.username || 'Profile Image';
       })
       .catch(error => {
@@ -34,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
     status: []
   };
 
+  // Load lookup data
   function loadLookupData() {
     const speciesPromise = fetch("https://pet-adopt-website-picku.onrender.com/pets/species/").then(res => res.json());
     const statusPromise = fetch("https://pet-adopt-website-picku.onrender.com/pets/status/").then(res => res.json());
@@ -51,24 +54,21 @@ document.addEventListener('DOMContentLoaded', function () {
   let currentPage = 1;
   const pageSize = 6;
 
+  // Load pet data and display it
   function loadPets(page = 1, search = '') {
-    document.getElementById("spinner").style.display = "block";
     fetch(`https://pet-adopt-website-picku.onrender.com/pets/petlist/?page=${page}&page_size=${pageSize}&search=${encodeURIComponent(search)}`)
       .then((res) => res.json())
       .then((data) => {
         const parent = document.getElementById("pet-grid");
         parent.innerHTML = '';
 
-        if (data.results.length > 0) {          
-          document.getElementById("spinner").style.display = "none";
+        if (data.results.length > 0) {
           document.getElementById("nodata").style.display = "none";
           displayPets(data.results);
           updatePagination(data.count, page);
         } else {
-
-          document.getElementById("spinner").style.display = "none";          
           document.getElementById("nodata").style.display = "block";
-          document.getElementById("pagination").innerHTML = ''; 
+          document.getElementById("pagination").innerHTML = ''; // Clear pagination if no data
         }
       })
       .catch((error) => {
@@ -77,7 +77,8 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   }
 
-  function displayPets(pets) {    
+  // Display pet cards
+  function displayPets(pets) {
     const parent = document.getElementById("pet-grid");
 
     pets.forEach((pet) => {
@@ -95,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const statusName = lookupData.status.find(status => status.id === statusId)?.name || 'Unknown';
 
       div.innerHTML = `
-        <img src="${pet.image}" alt="${pet.name}" />
+        <img src="${pet.image || 'default-image-url'}" alt="${pet.name}" />
         <h2>${pet.name}</h2>
         <p>Species: ${speciesNames}</p>
         <p>Status: ${statusName}</p>
@@ -106,10 +107,10 @@ document.addEventListener('DOMContentLoaded', function () {
           <div class="creator-details">
             <div class="d-flex">
               <div>
-                <p class="p-2" >Created by</p>
+                <p class="p-2">Created by</p>
               </div>
               <div style="margin-top: 12px">
-                <a class="p-1" id="creator-name-${pet.created_by}" class="creator-name" style="cursor: pointer;" onmouseover="this.style.color='black';" onmouseout="this.style.color='blue';" >Creator Name</a>
+                <a class="p-1" id="creator-name-${pet.created_by}" class="creator-name" style="cursor: pointer;" onmouseover="this.style.color='black';" onmouseout="this.style.color='blue';">Creator Name</a>
               </div>
             </div>
           </div>
@@ -122,10 +123,10 @@ document.addEventListener('DOMContentLoaded', function () {
         .then((res) => res.json())
         .then((user) => {
           const userDiv = div.querySelector('.creator-info');
-          userDiv.querySelector(`#creator-image-${pet.created_by}`).src = user.image || 'default-image-url'; 
+          userDiv.querySelector(`#creator-image-${pet.created_by}`).src = user.image || 'default-image-url'; // Set default image if none
           const creatorName = userDiv.querySelector(`#creator-name-${pet.created_by}`);
           creatorName.textContent = user.username || 'No Username';
-          creatorName.onclick = () => window.location.href = `profile.html?id=${pet.created_by}`; 
+          creatorName.href = `profile.html?id=${pet.created_by}`; // Set the link to the profile page
         })
         .catch((error) => {
           console.error("Error loading user information:", error);
@@ -143,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (currentPage > 1) {
         const prevItem = document.createElement('li');
         prevItem.classList.add('page-item');
-        prevItem.innerHTML = `<a class="page-link" href="#" data-page="${currentPage - 1}" onclick="window.location.href='#'">Previous</a>`;
+        prevItem.innerHTML = `<a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a>`;
         pagination.appendChild(prevItem);
       }
 
@@ -188,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
           const li = document.createElement("li");
           li.classList.add("dropdown-item");
           li.textContent = item.name;
-          li.onclick = () => loadPets(item.name);
+          li.onclick = () => loadPets(currentPage, item.name);
           parent.appendChild(li);
         });
       })
@@ -197,6 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   }
 
+  // Handle search input
   function handleSearch() {
     const value = document.getElementById("search").value;
     loadPets(currentPage, value);
@@ -205,17 +207,16 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initialize the page
   function initialize() {
     loadLookupData().then(() => {
-      handleSearch();
       loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/species/", "filter1");
       loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/sex/", "filter2");
       loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/color/", "filter3");
       loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/breed/", "filter4");
       loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/size/", "filter5");
       loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/status/", "filter6");
+      loadPets(currentPage);
+      loadReview();
     });
   }
-
- 
   const loadReview = () => {
     fetch("https://pet-adopt-website-picku.onrender.com/pets/petlist/")
       .then((res) => {
@@ -270,7 +271,10 @@ document.addEventListener('DOMContentLoaded', function () {
       parent.innerHTML = '<p>No reviews yet.</p>';
     }
   };
-  
   loadReview();
   initialize();
+
+  document.getElementById("search").addEventListener("keyup", handleSearch);
 });
+
+
