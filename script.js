@@ -147,14 +147,14 @@ document.addEventListener('DOMContentLoaded', function () {
       if (currentPage > 1) {
         const prevItem = document.createElement('li');
         prevItem.classList.add('page-item');
-        prevItem.innerHTML = `<a class="text-white bg-dark p-3 page-link" href="#" data-page="${currentPage - 1}">Previous</a>`;
+        prevItem.innerHTML = `<a class="text-white bg-dark px-5 page-link" href="#" data-page="${currentPage - 1}">Previous</a>`;
         pagination.appendChild(prevItem);
       }
 
       for (let i = 1; i <= pageCount; i++) {
         const pageItem = document.createElement('li');
         pageItem.classList.add('page-item');
-        pageItem.innerHTML = `<a class="text-dark bg-white p-3 page-link" href="#" data-page="${i}">${i}</a>`;
+        pageItem.innerHTML = `<a class="text-dark bg-white px-5 page-link" href="#" data-page="${i}">${i}</a>`;
         if (i === currentPage) {
           pageItem.classList.add('active');
         }
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (currentPage < pageCount) {
         const nextItem = document.createElement('li');
         nextItem.classList.add('page-item');
-        nextItem.innerHTML = `<a class="text-white bg-dark p-3 page-link" href="#" data-page="${currentPage + 1}">Next</a>`;
+        nextItem.innerHTML = `<a class="text-white bg-dark px-5 page-link" href="#" data-page="${currentPage + 1}">Next</a>`;
         pagination.appendChild(nextItem);
       }
     }
