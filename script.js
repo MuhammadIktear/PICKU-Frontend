@@ -5,7 +5,15 @@ document.addEventListener('DOMContentLoaded', function () {
   const userApiUrl = `https://pet-adopt-website-picku.onrender.com/user/list/${userId}/`;
   const profileApiUrl = `https://pet-adopt-website-picku.onrender.com/user/UserProfileDetail/${userId}/`;
 
-  // Function to fetch and display user data
+  const filters = {
+    species: null,
+    sex: null,
+    color: null,
+    breed: null,
+    size: null,
+    status: null
+  };
+
   function fetchUserData() {
     fetch(userApiUrl)
       .then(response => response.json())
@@ -21,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(response => response.json())
       .then(profile => {
         const profileImage = document.getElementById('profile-image');
-        profileImage.src = profile.image || 'default-image-url'; // Provide a default image URL
+        profileImage.src = profile.image || 'default-image-url'; 
         profileImage.alt = profile.username || 'Profile Image';
       })
       .catch(error => {
@@ -33,17 +41,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const lookupData = {
     species: [],
+    sex: [],
+    color: [],
+    breed: [],
+    size: [],
     status: []
   };
 
   // Load lookup data
   function loadLookupData() {
     const speciesPromise = fetch("https://pet-adopt-website-picku.onrender.com/pets/species/").then(res => res.json());
+    const sexPromise = fetch("https://pet-adopt-website-picku.onrender.com/pets/sex/").then(res => res.json());
+    const colorPromise = fetch("https://pet-adopt-website-picku.onrender.com/pets/color/").then(res => res.json());
+    const breedPromise = fetch("https://pet-adopt-website-picku.onrender.com/pets/breed/").then(res => res.json());
+    const sizePromise = fetch("https://pet-adopt-website-picku.onrender.com/pets/size/").then(res => res.json());
     const statusPromise = fetch("https://pet-adopt-website-picku.onrender.com/pets/status/").then(res => res.json());
 
-    return Promise.all([speciesPromise, statusPromise])
-      .then(([speciesData, statusData]) => {
+    return Promise.all([speciesPromise, sexPromise, colorPromise, breedPromise, sizePromise, statusPromise])
+      .then(([speciesData, sexData, colorData, breedData, sizeData, statusData]) => {
         lookupData.species = speciesData;
+        lookupData.sex = sexData;
+        lookupData.color = colorData;
+        lookupData.breed = breedData;
+        lookupData.size = sizeData;
         lookupData.status = statusData;
       })
       .catch((error) => {
@@ -53,25 +73,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
   let currentPage = 1;
   const pageSize = 6;
+  let searchQuery = '';
 
   // Load pet data and display it
-  function loadPets(page = 1, search = '') {
+  function loadPets(page = 1) {
     document.getElementById("spinner").style.display = "block";
-    fetch(`https://pet-adopt-website-picku.onrender.com/pets/petlist/?page=${page}&page_size=${pageSize}&search=${encodeURIComponent(search)}`)    
+
+    // Construct the filter query parameters
+    const filterParams = Object.keys(filters)
+      .filter(key => filters[key] !== null)
+      .map(key => `${key}=${encodeURIComponent(filters[key])}`)
+      .join('&');
+
+    fetch(`https://pet-adopt-website-picku.onrender.com/pets/petlist/?page=${page}&page_size=${pageSize}&search=${encodeURIComponent(searchQuery)}&${filterParams}`)
       .then((res) => res.json())
       .then((data) => {
         const parent = document.getElementById("pet-grid");
         parent.innerHTML = '';
 
-        if (data.results.length > 0) {          
+        if (data.results.length > 0) {
           document.getElementById("spinner").style.display = "none";
           document.getElementById("nodata").style.display = "none";
           displayPets(data.results);
           updatePagination(data.count, page);
-        } else {          
+        } else {
           document.getElementById("spinner").style.display = "none";
           document.getElementById("nodata").style.display = "block";
-          document.getElementById("pagination").innerHTML = ''; 
+          document.getElementById("pagination").innerHTML = '';
         }
       })
       .catch((error) => {
@@ -167,23 +195,28 @@ document.addEventListener('DOMContentLoaded', function () {
         nextItem.innerHTML = `<a class="text-white bg-dark px-5 page-link" href="#" data-page="${currentPage + 1}">Next</a>`;
         pagination.appendChild(nextItem);
       }
+
+      document.querySelectorAll('#pagination .page-link').forEach(link => {
+        link.addEventListener('click', function (event) {
+          event.preventDefault();
+          const page = parseInt(link.getAttribute('data-page'));
+          if (!isNaN(page) && page !== currentPage) {
+            currentPage = page;
+            loadPets(currentPage);
+          }
+        });
+      });
     }
   }
 
-  // Handle page clicks
-  document.getElementById('pagination').addEventListener('click', function (event) {
-    if (event.target.tagName === 'A') {
-      event.preventDefault();
-      const page = parseInt(event.target.getAttribute('data-page'), 10);
-      if (!isNaN(page)) {
-        currentPage = page;
-        loadPets(page);
-      }
-    }
-  });
+  // Update filter values
+  function updateFilter(type, value) {
+    filters[type] = value;
+    loadPets(currentPage);
+  }
 
-  // Load dropdown filters
-  function loadDropdown(url, filterId) {
+  // Load dropdowns
+  function loadDropdown(url, filterId, filterType) {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -192,7 +225,11 @@ document.addEventListener('DOMContentLoaded', function () {
           const li = document.createElement("li");
           li.classList.add("dropdown-item");
           li.textContent = item.name;
-          li.onclick = () => loadPets(currentPage, item.name);
+          li.onclick = () => {
+            // Update the filter for the type and load pets
+            const filterValue = item.slug; // Assuming the API returns a slug field
+            updateFilter(filterType, filterValue);
+          };
           parent.appendChild(li);
         });
       })
@@ -201,25 +238,28 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   }
 
-  // Handle search input
+  // Search handler
   function handleSearch() {
-    const value = document.getElementById("search").value;
-    loadPets(currentPage, value);
+    const searchInput = document.getElementById('search').value;
+    searchQuery = searchInput.trim();
+    loadPets(currentPage);
   }
 
   // Initialize the page
   function initialize() {
     loadLookupData().then(() => {
-      loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/species/", "filter1");
-      loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/sex/", "filter2");
-      loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/color/", "filter3");
-      loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/breed/", "filter4");
-      loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/size/", "filter5");
-      loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/status/", "filter6");
+      loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/species/", "filter1", "species");
+      loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/sex/", "filter2", "sex");
+      loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/color/", "filter3", "color");
+      loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/breed/", "filter4", "breed");
+      loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/size/", "filter5", "size");
+      loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/status/", "filter6", "status");
       loadPets(currentPage);
     });
-  }
-  initialize();
 
-  document.getElementById("search").addEventListener("keyup", handleSearch);
+    // Attach the search handler to the search button
+    document.getElementById('search-button').addEventListener('click', handleSearch);
+  }
+
+  initialize();
 });
