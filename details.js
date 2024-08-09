@@ -85,7 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
           showAlert('Please log in or register to apply for adoption.', 'alert-danger');
         } else if (data.adopted_by) {
           showAlert('Pet already adopted.', 'alert-danger');
-        } else {
+        } else if (data.created_by === parseInt(userId)) {
+          showAlert('You created this pet.', 'alert-warning');
+        }else {
           window.location.href = `adopt.html?id=${petId}`;
         }
       });
