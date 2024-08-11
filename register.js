@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           confirm_password,
       };
 
-      showAlert("", "alert");
       if (password !== confirm_password) {
           showAlert("Password and confirm password do not match", "alert-danger");
           return;
