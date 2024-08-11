@@ -259,6 +259,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Attach the search handler to the search button
     document.getElementById('search-button').addEventListener('click', handleSearch);
+    document.getElementById('refresh-button').addEventListener('click', function() {
+      // Reset filters and search query
+      Object.keys(filters).forEach(key => filters[key] = null);
+      searchQuery = '';
+      loadPets(currentPage);
+    });  
   }
 
   initialize();

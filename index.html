@@ -328,7 +328,10 @@
         </div>
 
         <input class="form-control me-2" type="search" placeholder="Search" id="search" aria-label="Search"/>
-        <button onclick="handleSearch()" class="btn btn-outline-success" type="button" id="search-button">Search</button>
+        <div d-flex>
+          <button onclick="handleSearch()" class="btn btn-outline-success" type="button" id="search-button">Search</button>
+          <button class="btn btn-outline-success"  type="button" id="refresh-button">Refresh</button>
+        </div>
       </div>
 
       <div>
@@ -342,7 +345,7 @@
           </div>
 
           <div id="spinner" class="spinner">
-            <h3 class="text-center">Loading...</h3>
+            <h3 class="text-center mt-5">Loading...</h3>
           </div>
 
           <nav class="mt-5" style="margin-bottom: -20px;" aria-label="Page navigation example">
