@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
               body: JSON.stringify(info),
           });
 
-          if (!response.ok) {
+          if (!response.ok) {   
               const errorData = await response.json();
               showAlert(`Registration failed ${errorData.detail || response.statusText}`, "alert-danger");
               return;
