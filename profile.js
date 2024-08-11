@@ -29,7 +29,7 @@ const loadUserAccount = () => {
             }
             
             document.getElementById("user-name").textContent = data.username ? data.username : 'Username not available';
-            document.getElementById("profile-image").src = data.image ? data.image : 'D:\User\Documents\OIP (3).jpeg';
+            document.getElementById("profile-image").src = data.image ? data.image : 'https://via.placeholder.com/150';
             document.getElementById("user-email").textContent = data.email ? data.email : 'Email not available';
             
         })
@@ -37,7 +37,7 @@ const loadUserAccount = () => {
             console.error("Error fetching user account data:", error);
             document.getElementById("user-balance").textContent = 'N/A';
             document.getElementById("user-name").textContent = 'Error loading username';
-            document.getElementById("profile-image").src = 'D:\User\Documents\OIP (3).jpeg';
+            document.getElementById("profile-image").src = 'https://ibb.co/X8ws6Zp';
             document.getElementById("user-location").textContent = 'N/A';
         });
 };

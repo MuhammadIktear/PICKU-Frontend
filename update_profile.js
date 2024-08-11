@@ -34,9 +34,8 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(data => {
           document.getElementById('user-balance').textContent = `$${data.balance || 'N/A'}`;
-          const profileImage = document.getElementById('profile-image-preview');
-          profileImage.src = data.image || 'default-image-url';
-          profileImage.alt = data.username || 'Profile Image';
+          document.getElementById("profile-image-preview").src = data.image ? data.image : 'https://via.placeholder.com/150';
+          document.getElementById("profile-image").src = data.image ? data.image : 'https://via.placeholder.com/150';
           document.getElementById('mobile-input').value = data.mobile_no || '';
           document.getElementById('location-input').value = data.location || '';
           document.getElementById('twitter-input').value = data.twitter || '';
