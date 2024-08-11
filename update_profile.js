@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
           const profileImage = document.getElementById('profile-image-preview');
           profileImage.src = data.image || 'default-image-url';
           profileImage.alt = data.username || 'Profile Image';
+          document.getElementById('mobile-input').value = data.mobile_no || '';
           document.getElementById('location-input').value = data.location || '';
           document.getElementById('twitter-input').value = data.twitter || '';
           document.getElementById('linkedin-input').value = data.linkedin || '';
@@ -49,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const formData = new FormData(profileForm);
       const userDetails = {
         username: formData.get('username') || document.getElementById('user-name-input').value,
+        mobile_no: formData.get('mobile_no') || document.getElementById('mobile-input').value,
         first_name: formData.get('first_name') || document.getElementById('first-name-input').value,
         last_name: formData.get('last_name') || document.getElementById('last-name-input').value,
         email: formData.get('email') || document.getElementById('email-input').value
@@ -75,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const profileForm = document.getElementById('profile-form');
       const formData = new FormData(profileForm);
       const profileDetails = {
+        mobile_no: formData.get('mobile_no') || document.getElementById('mobile-input').value,
         location: formData.get('location') || document.getElementById('location-input').value,
         twitter: formData.get('twitter') || document.getElementById('twitter-input').value,
         linkedin: formData.get('linkedin') || document.getElementById('linkedin-input').value
