@@ -86,14 +86,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         formData.append('rehoming_fee', rehomingFee);
 
+        // Handle image upload
         if (imageInput.files.length > 0) {
-            for (const file of imageInput.files) {
-                formData.append('image', file);
+            const imageFile = imageInput.files[0];
+            const imageFormData = new FormData();
+            imageFormData.append('image', imageFile);
+
+            try {
+                const imgBBResponse = await fetch('https://api.imgbb.com/1/upload?key=b2e307fa58d96628ff66908092e077c7', {
+                    method: 'POST',
+                    body: imageFormData
+                });
+
+                if (!imgBBResponse.ok) {
+                    throw new Error('Failed to upload image to imgBB.');
+                }
+
+                const imgBBResult = await imgBBResponse.json();
+                console.log('Image uploaded successfully:', imgBBResult); // Debug log
+                formData.append('image', imgBBResult.data.display_url);
+            } catch (error) {
+                console.error('Error uploading image:', error);
+                showAlert('Failed to upload image. Please try again.', 'alert-danger');
+                return;
             }
         } else {
             showAlert('An image file is required.', 'alert-danger');
             return;
         }
+
+        console.log('Form data:', formData); // Debug log
 
         try {
             const response = await fetch('https://pet-adopt-website-picku.onrender.com/pets/petlist/', {

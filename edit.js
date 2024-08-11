@@ -51,6 +51,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const loadPetData = async () => {
         try {
             const petId = new URLSearchParams(window.location.search).get('id');
+            if (!petId) throw new Error('Pet ID is missing from the URL.');
+
             const response = await fetch(`https://pet-adopt-website-picku.onrender.com/pets/petlist/${petId}/`);
             if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
             const pet = await response.json();
@@ -66,26 +68,44 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('personality-summary').value = pet.details;
 
             if (pet.image) {
-                const imageUrls = pet.image.split(','); 
-                if (imageUrls.length > 0) {
-                    imagePreview.src = imageUrls[0].trim();
-                }
+                imagePreview.src = pet.image;  // Assuming pet.image is already the display_url
             }
         } catch (error) {
             console.error('Error loading pet data:', error);
+            showAlert('Failed to load pet data. Please try again.', 'alert-danger');
         }
     };
 
     await loadPetData();
 
-    updateImageBtn.addEventListener('click', () => {
+    const uploadImageToImgBB = async (file) => {
+        const formData = new FormData();
+        formData.append('image', file);
+        formData.append('key', 'b2e307fa58d96628ff66908092e077c7'); // ImgBB API key
+
+        try {
+            const response = await fetch('https://api.imgbb.com/1/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+            const data = await response.json();
+            return data.data.display_url;  // Get the display_url from the ImgBB response
+        } catch (error) {
+            console.error('Error uploading image:', error);
+            showAlert('Failed to upload image. Please try again.', 'alert-danger');
+            return null;
+        }
+    };
+
+    updateImageBtn.addEventListener('click', async () => {
         if (imageInput.files.length > 0) {
             const file = imageInput.files[0];
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                imagePreview.src = reader.result;
-            };
-            reader.readAsDataURL(file);
+            const displayUrl = await uploadImageToImgBB(file);
+            if (displayUrl) {
+                imagePreview.src = displayUrl;
+            }
         } else {
             showAlert('Please select an image file.', 'alert-warning');
         }
@@ -116,11 +136,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
 
         if (imageInput.files.length > 0) {
-            formData.append('image', imageInput.files[0]);
+            const file = imageInput.files[0];
+            const displayUrl = await uploadImageToImgBB(file);
+            if (displayUrl) {
+                formData.append('image', displayUrl);  // Send the display_url to your backend
+            }
         }
 
         try {
             const petId = new URLSearchParams(window.location.search).get('id');
+            if (!petId) throw new Error('Pet ID is missing from the URL.');
+
             const response = await fetch(`https://pet-adopt-website-picku.onrender.com/pets/petlist/${petId}/`, {
                 method: 'PATCH',
                 body: formData,
