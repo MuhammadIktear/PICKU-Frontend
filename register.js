@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
           if (!response.ok) {
               const errorData = await response.json();
-              showAlert(`Registration failed: ${errorData.detail || response.statusText}`, "alert-danger");
+              showAlert(`Registration failed ${errorData.detail || response.statusText}`, "alert-danger");
               return;
           }
 
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           showAlert("Check your email for confirmation", "alert-success");
       } catch (error) {
           console.error("Registration error:", error);
-          showAlert("An error occurred during registration. Please try again.", "alert-danger");
+          showAlert("An error occurred during registration. Please ensure email ID and unique username. Please try again.", "alert-danger");
       }
   };
 
