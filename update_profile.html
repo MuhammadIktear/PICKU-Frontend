@@ -12,6 +12,12 @@
   crossorigin="anonymous"
 />
   <link rel="stylesheet" href="update_profile.css" />
+  <!--FONT AWESOME-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--GOOGLE FONTS-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet">
   <style>
     .navbar-custom {
       background-color: #ffffff;
@@ -45,35 +51,80 @@
     }
 
     /* Footer styles */
-.footer-section {
-  background: #ffffff;
-  color: #000000;
-  text-align: center;
-  padding: 20px 0;
-}
-
-.footer-section p {
-  margin: 0;
-}
-
+    .footer{
+      background:#ffffff;
+      padding:10px 0px;
+      font-family: 'Play', sans-serif;
+      text-align:center;  
+      }
+      
+      .footer .row{
+      width:100%;
+      margin:0.5% 0%;
+      padding:0.3% 0%;
+      color:rgb(46, 43, 43);
+      font-size:0.8em;
+      }
+      
+      .footer .row a{
+      text-decoration:none;
+      color:rgb(46, 44, 44);
+      transition:0.5s;
+      }
+      
+      .footer .row a:hover{
+      color:#ca880d;
+      }
+      
+      .footer .row ul{
+      width:100%;
+      }
+      
+      .footer .row ul li{
+      display:inline-block;
+      margin:0px 30px;
+      }
+      
+      .footer .row a i{
+      font-size:2em;
+      margin:0% 1%;
+      }
+      
+      @media (max-width:720px){
+      .footer{
+      text-align:left;
+      padding:5%;
+      }
+      .footer .row ul li{
+      display:block;
+      margin:10px 0px;
+      text-align:left;
+      }
+      .footer .row a i{
+      margin:0% 3%;
+      }
+      }
   </style> 
 </head>
 <body>
 <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
   <div class="container">
-    <a onclick="window.location.href='index.html';" class="navbar-brand" href="#">PICKU</a>
+    <a onclick="window.location.href='index.html';" class="navbar-brand" style="cursor: pointer;" >PICKU</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" onclick="window.location.href='index.html#pets';">Adopt a Pet</a>
+          <a class="nav-link" href="all_pets.html">Adopt a pet</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" onclick="window.location.href='index.html#contact';">Contact</a>
+        <li class="nav-item" id="nav_about_us">
+          <a class="nav-link" href="about_us.html">About us</a>
         </li>
+        <li class="nav-item" id="nav_contact_us">
+          <a class="nav-link" href="contact_us.html">Conatct us</a>
+        </li> 
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item d-none" id="nav_login">
@@ -197,12 +248,32 @@
       </section>
     </div>
   </div>
-      <!-- Footer -->
-      <footer class="footer-section">
-        <div class="container">
-          <p class="text-dark">&copy; 2024 Picku. All rights reserved.</p>
-        </div>
-      </footer>
+  <footer>
+    <div class="footer mt-5">
+    <div class="row">
+      <div class="d-flex mt-4" style="justify-content:center; gap: 20px;">
+        <a href="https://www.facebook.com/profile.php?id=61564093385737" target="_blank"><i class="fa fa-facebook"></i></a>
+        <a href="https://www.instagram.com/explore/tags/pets/" target="_blank"><i class="fa fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@cutepetstv11" target="_blank"><i class="fa fa-youtube"></i></a>
+        <a href="https://x.com/pets" target="_blank"><i class="fa fa-twitter"></i></a>
+      </div>
+  
+    </div>
+    
+    <div class="row">
+    <ul>
+    <li><a href="about_us.html">About Us</a></li>
+    <li><a href="contact_us.html">Contact us</a></li>
+    <li><a href="all_pets.html">All Pets</a></li>
+    <li><a onclick="window.location.href='index.html#review-container';" style="cursor:pointer;">Pet Reviews</a></li>
+    </ul>
+    </div>
+    
+    <div class="row" style="justify-content:center;">
+    INFERNO Copyright © 2024 Picku - All rights reserved || Designed By: Iktear
+    </div>
+    </div>
+    </footer>
   <script src="update_profile.js"></script>
   <script src="logout.js"></script>
   <script src="navbar.js"></script>

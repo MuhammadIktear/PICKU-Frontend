@@ -41,13 +41,13 @@ const loadReview = () => {
           div.appendChild(link);
   
           div.innerHTML += `
-            <h4 class="mt-1">${pet.name}</h4>
-            <p style="color:dark">${review.body}</p>
+            <a href=details.html?id=${pet.id} class="mt-1"  style="text-decoration: none; cursor: pointer; color:#ce8460; " onmouseover="this.style.color='black';" onmouseout="this.style.color='#ce8460';"><h3>${pet.name}</h3></a>
+            <p style="color:dark; font-size: 17px"; letter-spacing: 0.5px;>${review.body}</p>
             <small style="color:#ce8460;">Reviewed by ${review.author_username}</small> on <small style="color:#ce8460;">${new Date(review.created_at).toLocaleDateString()}</small>
           `;
   
           parent.appendChild(div);
-        });
+        }); 
       }
     });
   

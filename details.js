@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const petInfoTable = document.getElementById('pet-info');
       petInfoTable.innerHTML = `
+        <tr><td><strong>Location:</strong></td><td>${data.location}</td></tr>
         <tr><td><strong>Species:</strong></td><td>${data.species.map(id => lookupData.species.find(species => species.id === id).name).join(', ')}</td></tr>
         <tr><td><strong>Breed:</strong></td><td>${data.breed.map(id => lookupData.breed.find(breed => breed.id === id).name).join(', ')}</td></tr>
         <tr><td><strong>Color:</strong></td><td>${data.color.map(id => lookupData.color.find(color => color.id === id).name).join(', ')}</td></tr>

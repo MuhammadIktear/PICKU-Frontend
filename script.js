@@ -93,28 +93,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (data.results.length > 0) {
           document.getElementById("spinner").style.display = "none";
-          document.getElementById("nodata").style.display = "none";
-          displayPets(data.results);
+          document.getElementById("see_more").style.display = "block";
+          const petsToShow = data.results.slice(0, 3);
+          displayPets(petsToShow);
           updatePagination(data.count, page);
         } else {
           document.getElementById("spinner").style.display = "none";
-          document.getElementById("nodata").style.display = "block";
+          document.getElementById("see_more").style.display = "none";
           document.getElementById("pagination").innerHTML = '';
         }
       })
       .catch((error) => {
         console.error("Error loading pets:", error);
-        document.getElementById("nodata").style.display = "block";
       });
   }
 
   // Display pet cards
   function displayPets(pets) {
     const parent = document.getElementById("pet-grid");
-
     pets.forEach((pet) => {
       const div = document.createElement("div");
-      div.classList.add("col-3", "pet-card");
+      div.classList.add("col-3", "bg-white","pet-card");
 
       if (!lookupData.species || !lookupData.status) {
         console.error("Lookup data is not yet loaded.");
@@ -129,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
       div.innerHTML = `
         <img src="${pet.image || 'default-image-url'}" alt="${pet.name}" />
         <h2>${pet.name}</h2>
+        <p>Location: ${pet.location}</p>
         <p>Species: ${speciesNames}</p>
         <p>Status: ${statusName}</p>
         <p>Rehoming Fee: $${pet.rehoming_fee}</p>
@@ -208,64 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   }
+  loadLookupData();
+  loadPets(currentPage);
 
-  // Update filter values
-  function updateFilter(type, value) {
-    filters[type] = value;
-    loadPets(currentPage);
-  }
-
-  // Load dropdowns
-  function loadDropdown(url, filterId, filterType) {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        const parent = document.getElementById(filterId);
-        data.forEach((item) => {
-          const li = document.createElement("li");
-          li.classList.add("dropdown-item");
-          li.textContent = item.name;
-          li.onclick = () => {
-            // Update the filter for the type and load pets
-            const filterValue = item.slug; // Assuming the API returns a slug field
-            updateFilter(filterType, filterValue);
-          };
-          parent.appendChild(li);
-        });
-      })
-      .catch((error) => {
-        console.error(`Error fetching data from ${url}:`, error);
-      });
-  }
-
-  // Search handler
-  function handleSearch() {
-    const searchInput = document.getElementById('search').value;
-    searchQuery = searchInput.trim();
-    loadPets(currentPage);
-  }
-
-  // Initialize the page
-  function initialize() {
-    loadLookupData().then(() => {
-      loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/species/", "filter1", "species");
-      loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/sex/", "filter2", "sex");
-      loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/color/", "filter3", "color");
-      loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/breed/", "filter4", "breed");
-      loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/size/", "filter5", "size");
-      loadDropdown("https://pet-adopt-website-picku.onrender.com/pets/status/", "filter6", "status");
-      loadPets(currentPage);
-    });
-
-    // Attach the search handler to the search button
-    document.getElementById('search-button').addEventListener('click', handleSearch);
-    document.getElementById('refresh-button').addEventListener('click', function() {
-      // Reset filters and search query
-      Object.keys(filters).forEach(key => filters[key] = null);
-      searchQuery = '';
-      loadPets(currentPage);
-    });  
-  }
-
-  initialize();
 });
