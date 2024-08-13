@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formData = new FormData();
         formData.append('name', document.getElementById('name').value);
+        formData.append('location', document.getElementById('location').value);
         formData.append('status', statusSelect.value);
         formData.append('created_by', createdById);
         formData.append('details', document.getElementById('personality-summary').value);
@@ -103,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 const imgBBResult = await imgBBResponse.json();
-                console.log('Image uploaded successfully:', imgBBResult); // Debug log
+                console.log('Image uploaded successfully:', imgBBResult);
                 formData.append('image', imgBBResult.data.display_url);
             } catch (error) {
                 console.error('Error uploading image:', error);

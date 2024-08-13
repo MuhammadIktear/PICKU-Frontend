@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const pet = await response.json();
 
             document.getElementById('name').value = pet.name;
+            document.getElementById('location').value = pet.location;
             speciesSelect.value = pet.species;
             statusSelect.value = pet.status;
             sexSelect.value = pet.sex;
@@ -121,6 +122,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const formData = new FormData();
         formData.append('name', document.getElementById('name').value);
+        formData.append('location', document.getElementById('location').value);
         formData.append('status', statusSelect.value);
         formData.append('created_by', createdById);
         formData.append('details', document.getElementById('personality-summary').value);
