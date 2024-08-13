@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+  <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+  crossorigin="anonymous"
+/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--GOOGLE FONTS-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="update_profile.css" />
+  <style>
+    .navbar-custom {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e5e5e5; 
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar-brand {
+      font-weight: bold; 
+    }
+    .nav-link {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      transition: color 0.5s ease;
+      padding: 10px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      color: #333; 
+    }
+    .nav-link:hover {
+      color: #b35700; 
+      cursor: pointer;
+    }
+    .navbar-nav .nav-item:not(:last-child) {
+      margin-right: 15px; 
+    }
+    .about-section {
+        padding: 60px 0;
+        background: rgb(235, 229, 229);
+        color: #252121;
+        text-align: center;
+    }
+    .about-text {
+        font-size: 1.25em;
+        line-height: 1.6;
+    }
+    .about-text p{
+        text-align: left;
+        font-size: 16px;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 400;
+        letter-spacing: 1.2px;
+        
+    }    
+    .about-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    /* Footer styles */
+    .footer{
+      background:#ffffff;
+      padding:10px 0px;
+      font-family: 'Play', sans-serif;
+      text-align:center;  
+      }
+      
+      .footer .row{
+      width:100%;
+      margin:0.5% 0%;
+      padding:0.3% 0%;
+      color:rgb(46, 43, 43);
+      font-size:0.8em;
+      }
+      
+      .footer .row a{
+      text-decoration:none;
+      color:rgb(46, 44, 44);
+      transition:0.5s;
+      }
+      
+      .footer .row a:hover{
+      color:#ca880d;
+      }
+      
+      .footer .row ul{
+      width:100%;
+      }
+      
+      .footer .row ul li{
+      display:inline-block;
+      margin:0px 30px;
+      }
+      
+      .footer .row a i{
+      font-size:2em;
+      margin:0% 1%;
+      }
+      
+      @media (max-width:720px){
+      .footer{
+      text-align:left;
+      padding:5%;
+      }
+      .footer .row ul li{
+      display:block;
+      margin:10px 0px;
+      text-align:left;
+      }
+      .footer .row a i{
+      margin:0% 3%;
+      }
+      }
+
+  </style> 
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+  <div class="container">
+    <a onclick="window.location.href='index.html';" class="navbar-brand" style="cursor: pointer;" >PICKU</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="all_pets.html">Adopt a pet</a>
+        </li>
+        <li class="nav-item" id="nav_about_us">
+          <a class="nav-link" href="about_us.html">About us</a>
+        </li>
+        <li class="nav-item" id="nav_contact_us">
+          <a class="nav-link" href="contact_us.html">Conatct us</a>
+        </li> 
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item d-none" id="nav_login">
+          <a class="nav-link" href="login.html">Login</a>
+        </li>
+        <li class="nav-item d-none" id="nav_register">
+          <a class="nav-link" href="register.html">Register</a>
+        </li>
+        <li class="nav-item d-none" id="nav_logout">
+          <a onclick="handleLogout();" class="nav-link">Logout</a>
+        </li>
+        <li class="nav-item d-none" id="nav_profile">
+          <a class="nav-link" href="profile.html">Profile</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- about Section -->
+<section class="about-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8 about-text">
+                <h1>5 Tips for a Happy and Healthy Dog</h1>
+                <br>
+                <h3 style="text-align: left;">Introduction</h3>
+                <p>Dogs are not just pets; they’re family. Ensuring their happiness and health is essential for a fulfilling companionship. Here are five tips to help you keep your furry friend in top shape.</p>
+                <br>
+                <h3 style="text-align: left;">1. Balanced Diet</h3>
+                <p>A nutritious diet is crucial for your dog's overall well-being. Choose high-quality dog food that meets their age, size, and health needs. Consult your veterinarian to ensure you’re providing the right balance of proteins, fats, and vitamins.</p>
+                <br>
+                <h3 style="text-align: left;">2. Regular Exercise</h3>
+                <p>Exercise is vital for maintaining your dog's physical and mental health. Daily walks, playtime, and interactive toys help keep them active and engaged. Tailor the exercise routine to your dog’s breed, age, and energy level.</p>
+                <br>
+                <h3 style="text-align: left;">3. Routine Vet Visits</h3>
+                <p>Regular check-ups with your vet are essential for early detection of health issues. Vaccinations, dental care, and parasite prevention are all part of routine care. Don’t forget to discuss any concerns or changes in behavior with your vet.</p>  
+                <br>
+                <h3 style="text-align: left;">4. Mental Stimulation</h3>
+                <p>Mental enrichment is as important as physical exercise. Provide puzzle toys, training sessions, and new experiences to keep your dog’s mind sharp. This helps prevent boredom and destructive behavior.</p>  
+                <br>
+                <h3 style="text-align: left;">5. Quality Time</h3>
+                <p>Spending quality time with your dog strengthens your bond and keeps them happy. Whether it’s snuggling on the couch, playing fetch, or simply being present, your companionship is what they cherish most.</p> 
+                <br>
+                <h3 style="text-align: left;">Conclusion</h3>
+                <p>By following these tips, you can ensure your dog lives a long, happy, and healthy life. Remember, a well-cared-for dog is a happy dog!</p>                                                                                   
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+  <div class="footer mt-5">
+  <div class="row">
+    <div class="d-flex mt-4" style="justify-content:center; gap: 20px;">
+      <a href="https://www.facebook.com/profile.php?id=61564093385737" target="_blank"><i class="fa fa-facebook"></i></a>
+      <a href="https://www.instagram.com/explore/tags/pets/" target="_blank"><i class="fa fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@cutepetstv11" target="_blank"><i class="fa fa-youtube"></i></a>
+      <a href="https://x.com/pets" target="_blank"><i class="fa fa-twitter"></i></a>
+    </div>
+
+  </div>
+  
+  <div class="row">
+  <ul>
+  <li><a href="about_us.html">About Us</a></li>
+  <li><a href="contact_us.html">Contact us</a></li>
+  <li><a href="all_pets.html">All Pets</a></li>
+  <li><a onclick="window.location.href='index.html#review-container';" style="cursor:pointer;">Pet Reviews</a></li>
+  </ul>
+  </div>
+  
+  <div class="row" style="justify-content:center;">
+  INFERNO Copyright © 2024 Picku - All rights reserved || Designed By: Iktear
+  </div>
+  </div>
+  </footer>
+  <script src="logout.js"></script>
+  <script src="navbar.js"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+  crossorigin="anonymous"
+></script>
+
+</body>
+</html>

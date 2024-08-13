@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       div.innerHTML = `
         <img src="${pet.image || 'default-image-url'}" alt="${pet.name}" />
-        <h2>${pet.name}</h2>
+        <h2 style="color:#ca880d ;">${pet.name}</h2>
         <p>Location: ${pet.location}</p>
         <p>Species: ${speciesNames}</p>
         <p>Status: ${statusName}</p>
