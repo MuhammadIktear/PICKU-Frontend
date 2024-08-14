@@ -1,149 +1,191 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const userId = localStorage.getItem("user_id");
-  console.log(`User ID: ${userId}`);
+    const alertContainer = document.getElementById('alert-container');
   
-  const userApiUrl = `https://pet-adopt-website-picku.onrender.com/user/list/${userId}/`;
-  const profileApiUrl = `https://pet-adopt-website-picku.onrender.com/user/UserProfileDetail/${userId}/`;
-
-  function fetchUserData() {
+    if (!alertContainer) {
+      console.error("Alert container element not found.");
+      return;
+    }
+  
+    const showAlert = (message, type) => {
+      alertContainer.innerHTML = '';
+      const alertElement = document.createElement('div');
+      alertElement.className = `alert ${type} alert-dismissible fade show`;
+      alertElement.role = 'alert';
+      alertElement.innerHTML = `
+        <strong>${type === 'alert-success' ? 'Success:' : 'Error:'}</strong> ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      `;
+      alertContainer.appendChild(alertElement);
+    };
+  
+    const userId = localStorage.getItem("user_id");
+    const userApiUrl = `https://pet-adopt-website-picku.onrender.com/user/list/${userId}/`;
+    const profileApiUrl = `https://pet-adopt-website-picku.onrender.com/user/UserProfileDetail/${userId}/`;
+  
+    function fetchUserData() {
       // Fetch user details
       fetch(userApiUrl)
-          .then(response => {
-              if (!response.ok) {
-                  throw new Error('Network response was not ok.');
-              }
-              return response.json();
-          })
-          .then(data => {
-              document.getElementById('user-name').textContent = data.username || 'No Username';
-              document.getElementById('user-email').textContent = data.email || 'No Email';
-              document.getElementById('user-name-input').value = data.username;
-              document.getElementById('first-name-input').value = data.first_name;
-              document.getElementById('last-name-input').value = data.last_name;
-              document.getElementById('email-input').value = data.email;
-          })
-          .catch(error => console.error('Error fetching user details:', error));
-
+        .then(response => {
+          if (!response.ok) throw new Error('Network response was not ok.');
+          return response.json();
+        })
+        .then(data => {
+          const userNameInput = document.getElementById('user-name-input');
+          const firstNameInput = document.getElementById('first-name-input');
+          const lastNameInput = document.getElementById('last-name-input');
+          const emailInput = document.getElementById('email-input');
+          const userNameDisplay = document.getElementById('user-name');
+          const userEmailDisplay = document.getElementById('user-email');
+  
+          if (userNameDisplay) userNameDisplay.textContent = data.username || 'No Username';
+          if (userEmailDisplay) userEmailDisplay.textContent = data.email || 'No Email';
+          if (userNameInput) userNameInput.value = data.username;
+          if (firstNameInput) firstNameInput.value = data.first_name;
+          if (lastNameInput) lastNameInput.value = data.last_name;
+          if (emailInput) emailInput.value = data.email;
+        })
+        .catch(error => showAlert('Error fetching user details: ' + error.message, 'alert-danger'));
+  
       // Fetch user profile data
       fetch(profileApiUrl)
-          .then(response => {
-              if (!response.ok) {
-                  throw new Error('Network response was not ok.');
-              }
-              return response.json();
-          })
-          .then(data => {
-              document.getElementById('user-balance').textContent = `$${data.balance || 'N/A'}`;
-              document.getElementById("profile-image-preview").src = data.image ? data.image : 'https://via.placeholder.com/150';
-              document.getElementById("profile-image").src = data.image ? data.image : 'https://via.placeholder.com/150';
-              document.getElementById('mobile-input').value = data.mobile_no || '';
-              document.getElementById('location-input').value = data.location || '';
-              document.getElementById('twitter-input').value = data.twitter || '';
-              document.getElementById('linkedin-input').value = data.linkedin || '';
-          })
-          .catch(error => console.error('Error fetching user profile data:', error));
-  }
-
-  function updateUserDetails() {
+        .then(response => {
+          if (!response.ok) throw new Error('Network response was not ok.');
+          return response.json();
+        })
+        .then(data => {
+          const userBalanceDisplay = document.getElementById('user-balance');
+          const profileImagePreview = document.getElementById('profile-image-preview');
+          const profileImage = document.getElementById('profile-image');
+          const mobileInput = document.getElementById('mobile-input');
+          const locationInput = document.getElementById('location-input');
+          const twitterInput = document.getElementById('twitter-input');
+          const linkedinInput = document.getElementById('linkedin-input');
+  
+          if (userBalanceDisplay) userBalanceDisplay.textContent = `$${data.balance || 'N/A'}`;
+          if (profileImagePreview) profileImagePreview.src = data.image ? data.image : 'https://via.placeholder.com/150';
+          if (profileImage) profileImage.src = data.image ? data.image : 'https://via.placeholder.com/150';
+          if (mobileInput) mobileInput.value = data.mobile_no || '';
+          if (locationInput) locationInput.value = data.location || '';
+          if (twitterInput) twitterInput.value = data.twitter || '';
+          if (linkedinInput) linkedinInput.value = data.linkedin || '';
+        })
+        .catch(error => showAlert('Error fetching user profile data: ' + error.message, 'alert-danger'));
+    }
+  
+    function updateUserDetails() {
+      const userNameInput = document.getElementById('user-name-input');
+      const firstNameInput = document.getElementById('first-name-input');
+      const lastNameInput = document.getElementById('last-name-input');
+      const emailInput = document.getElementById('email-input');
       const profileForm = document.getElementById('profile-form');
-      const formData = new FormData(profileForm);
-      const userDetails = {
-          username: formData.get('username') || document.getElementById('user-name-input').value,
-          mobile_no: formData.get('mobile_no') || document.getElementById('mobile-input').value,
-          first_name: formData.get('first_name') || document.getElementById('first-name-input').value,
-          last_name: formData.get('last_name') || document.getElementById('last-name-input').value,
-          email: formData.get('email') || document.getElementById('email-input').value
-      };
-
-      fetch(userApiUrl, {
-          method: 'PUT',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(userDetails)
-      })
-          .then(response => {
-              if (response.ok) {
-                  alert('User details updated successfully!');
-              } else {
-                  alert('Failed to update user details.');
-              }
-          })
-          .catch(error => console.error('Error updating user details:', error));
-  }
-
-  function updateUserProfile() {
-      const profileForm = document.getElementById('profile-form');
-      const formData = new FormData(profileForm);
-      const profileDetails = {
-          mobile_no: formData.get('mobile_no') || document.getElementById('mobile-input').value,
-          location: formData.get('location') || document.getElementById('location-input').value,
-          twitter: formData.get('twitter') || document.getElementById('twitter-input').value,
-          linkedin: formData.get('linkedin') || document.getElementById('linkedin-input').value
-      };
-
-      fetch(profileApiUrl, {
-          method: 'PATCH',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(profileDetails)
-      })
-          .then(response => {
-              if (response.ok) {
-                  alert('User profile updated successfully!');
-              } else {
-                  alert('Failed to update user profile.');
-              }
-          })
-          .catch(error => console.error('Error updating user profile:', error));
-  }
-
-  function updateImage() {
-      const imageInput = document.getElementById('profile-image-upload');
-      const file = imageInput.files[0];
-      if (!file) {
-          alert('Please select an image file to upload.');
-          return;
+  
+      if (!profileForm) {
+        showAlert('Profile form not found.', 'alert-danger');
+        return;
       }
-
+  
+      const userDetails = {
+        username: userNameInput ? userNameInput.value : '',
+        mobile_no: document.getElementById('mobile-input') ? document.getElementById('mobile-input').value : '',
+        first_name: firstNameInput ? firstNameInput.value : '',
+        last_name: lastNameInput ? lastNameInput.value : '',
+        email: emailInput ? emailInput.value : ''
+      };
+  
+      fetch(userApiUrl, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userDetails)
+      })
+      .then(response => {
+        if (response.ok) {
+          showAlert('User details updated successfully!', 'alert-success');
+        } else {
+          showAlert('Failed to update user details.', 'alert-danger');
+        }
+      })
+      .catch(error => showAlert('Error updating user details: ' + error.message, 'alert-danger'));
+    }
+  
+    function updateUserProfile() {
+      const profileForm = document.getElementById('profile-form');
+      const mobileInput = document.getElementById('mobile-input');
+      const locationInput = document.getElementById('location-input');
+      const twitterInput = document.getElementById('twitter-input');
+      const linkedinInput = document.getElementById('linkedin-input');
+  
+      if (!profileForm) {
+        showAlert('Profile form not found.', 'alert-danger');
+        return;
+      }
+  
+      const profileDetails = {
+        mobile_no: mobileInput ? mobileInput.value : '',
+        location: locationInput ? locationInput.value : '',
+        twitter: twitterInput ? twitterInput.value : '',
+        linkedin: linkedinInput ? linkedinInput.value : ''
+      };
+  
+      fetch(profileApiUrl, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(profileDetails)
+      })
+      .then(response => {
+        if (response.ok) {
+          showAlert('User profile updated successfully!', 'alert-success');
+        } else {
+          showAlert('Failed to update user profile.', 'alert-danger');
+        }
+      })
+      .catch(error => showAlert('Error updating user profile: ' + error.message, 'alert-danger'));
+    }
+  
+    function updateImage() {
+      const imageInput = document.getElementById('profile-image-upload');
+      const file = imageInput ? imageInput.files[0] : null;
+  
+      if (!file) {
+        showAlert('Please select an image file to upload.', 'alert-warning');
+        return;
+      }
+  
       const cloudName = 'ds97wytcs';
       const uploadPreset = 'xzygjgsf'; 
       const formData = new FormData();
       formData.append('file', file);
       formData.append('upload_preset', uploadPreset);
-
+  
       fetch(`https://api.cloudinary.com/v1_1/${cloudName}/upload`, {
-          method: 'POST',
-          body: formData,
+        method: 'POST',
+        body: formData,
       })
-          .then(response => response.json())
-          .then(cloudinaryResponse => {
-              const displayUrl = cloudinaryResponse.secure_url;
-              return fetch(profileApiUrl, {
-                  method: 'PATCH',
-                  headers: {
-                      'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({ image: displayUrl })
-              });
-          })
-          .then(response => {
-              if (response.ok) {
-                  alert('Image updated successfully!');
-                  fetchUserData();
-              } else {
-                  alert('Failed to update image.');
-              }
-          })
-          .catch(error => console.error('Error updating image:', error));
-  }
-
-  document.getElementById('update-image-btn').addEventListener('click', updateImage);
-  document.getElementById('update-profile-btn').addEventListener('click', () => {
+      .then(response => response.json())
+      .then(cloudinaryResponse => {
+        const displayUrl = cloudinaryResponse.secure_url;
+        return fetch(profileApiUrl, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ image: displayUrl })
+        });
+      })
+      .then(response => {
+        if (response.ok) {
+          showAlert('Image updated successfully!', 'alert-success');
+          fetchUserData();
+        } else {
+          showAlert('Failed to update image.', 'alert-danger');
+        }
+      })
+      .catch(error => showAlert('Error updating image: ' + error.message, 'alert-danger'));
+    }
+  
+    document.getElementById('update-image-btn')?.addEventListener('click', updateImage);
+    document.getElementById('update-profile-btn')?.addEventListener('click', () => {
       updateUserDetails();
       updateUserProfile();
+    });
+  
+    fetchUserData();
   });
-
-  fetchUserData();
-});
+  
