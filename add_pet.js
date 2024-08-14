@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.append(field, value);
         });
 
-        // Add rehoming_fee to the form data
         const rehomingFee = rehomingFeeInput.value.trim();
         if (rehomingFee === '' || isNaN(rehomingFee)) {
             showAlert('Rehoming fee must be a valid number.', 'alert-danger');
@@ -87,25 +86,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         formData.append('rehoming_fee', rehomingFee);
 
-        // Handle image upload
         if (imageInput.files.length > 0) {
             const imageFile = imageInput.files[0];
+            const cloudinaryUrl = `https://api.cloudinary.com/v1_1/ds97wytcs/upload`;
+            const cloudinaryUploadPreset = 'xzygjgsf';
             const imageFormData = new FormData();
-            imageFormData.append('image', imageFile);
+            imageFormData.append('file', imageFile);
+            imageFormData.append('upload_preset', cloudinaryUploadPreset);
 
             try {
-                const imgBBResponse = await fetch('https://api.imgbb.com/1/upload?key=b2e307fa58d96628ff66908092e077c7', {
+                const cloudinaryResponse = await fetch(cloudinaryUrl, {
                     method: 'POST',
                     body: imageFormData
                 });
 
-                if (!imgBBResponse.ok) {
-                    throw new Error('Failed to upload image to imgBB.');
+                if (!cloudinaryResponse.ok) {
+                    throw new Error('Failed to upload image to Cloudinary.');
                 }
 
-                const imgBBResult = await imgBBResponse.json();
-                console.log('Image uploaded successfully:', imgBBResult);
-                formData.append('image', imgBBResult.data.display_url);
+                const cloudinaryResult = await cloudinaryResponse.json();
+                console.log('Image uploaded successfully:', cloudinaryResult);
+                formData.append('image', cloudinaryResult.secure_url);
             } catch (error) {
                 console.error('Error uploading image:', error);
                 showAlert('Failed to upload image. Please try again.', 'alert-danger');
@@ -116,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        console.log('Form data:', formData); // Debug log
+        console.log('Form data:', formData); 
 
         try {
             const response = await fetch('https://pet-adopt-website-picku.onrender.com/pets/petlist/', {

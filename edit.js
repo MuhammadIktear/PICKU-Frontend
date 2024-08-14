@@ -79,20 +79,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     await loadPetData();
 
-    const uploadImageToImgBB = async (file) => {
+    const uploadImageToCloudinary = async (file) => {
         const formData = new FormData();
-        formData.append('image', file);
-        formData.append('key', 'b2e307fa58d96628ff66908092e077c7'); // ImgBB API key
+        formData.append('file', file);
+        formData.append('upload_preset', 'xzygjgsf'); // Cloudinary upload preset
 
         try {
-            const response = await fetch('https://api.imgbb.com/1/upload', {
+            const response = await fetch('https://api.cloudinary.com/v1_1/ds97wytcs/upload', {
                 method: 'POST',
                 body: formData
             });
 
             if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
             const data = await response.json();
-            return data.data.display_url;  // Get the display_url from the ImgBB response
+            return data.secure_url;  // Get the secure_url from the Cloudinary response
         } catch (error) {
             console.error('Error uploading image:', error);
             showAlert('Failed to upload image. Please try again.', 'alert-danger');
@@ -103,9 +103,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     updateImageBtn.addEventListener('click', async () => {
         if (imageInput.files.length > 0) {
             const file = imageInput.files[0];
-            const displayUrl = await uploadImageToImgBB(file);
-            if (displayUrl) {
-                imagePreview.src = displayUrl;
+            const secureUrl = await uploadImageToCloudinary(file);
+            if (secureUrl) {
+                imagePreview.src = secureUrl;
             }
         } else {
             showAlert('Please select an image file.', 'alert-warning');
@@ -139,9 +139,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         if (imageInput.files.length > 0) {
             const file = imageInput.files[0];
-            const displayUrl = await uploadImageToImgBB(file);
-            if (displayUrl) {
-                formData.append('image', displayUrl);  // Send the display_url to your backend
+            const secureUrl = await uploadImageToCloudinary(file);
+            if (secureUrl) {
+                formData.append('image', secureUrl);  // Send the secure_url to your backend
             }
         }
 
