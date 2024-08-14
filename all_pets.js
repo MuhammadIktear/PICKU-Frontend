@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
       pets.forEach((pet) => {
         const div = document.createElement("div");
-        div.classList.add("col-3", "pet-card");
+        div.classList.add("p-0", "col-3", "pet-card");
   
         if (!lookupData.species || !lookupData.status) {
           console.error("Lookup data is not yet loaded.");
@@ -141,9 +141,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div>
                   <p class="p-1"><small>Created by</small></p>
                 </div>
-                <div style="margin-top: 9px">
-                  <a class="p-1" id="creator-name-${pet.created_by}" class="creator-name " style="cursor: pointer; color:#ce8460; " onmouseover="this.style.color='black';" onmouseout="this.style.color='#ce8460';">Creator Name</a>
-                </div>
+              <div style="margin-top: 9px">
+                <small><a class="p-1" id="creator-name-${pet.created_by}" class="creator-name " style="cursor: pointer; color:#ce8460; " onmouseover="this.style.color='black';" onmouseout="this.style.color='#ce8460';">Creator Name</a></small>on <small style="color:#ce8460;">${new Date(pet.created_at).toLocaleDateString()}</small>
+              </div>
               </div>
             </div>
           </div>

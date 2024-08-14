@@ -159,12 +159,17 @@ h6,
 
 /* Hero section styles */
 .hero-section {
-  background-image: url("img/pexels-photo-1931372.webp");
+  background-image: url("img/photo-1526363269865-60998e11d82d.avif");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   color: #fff;
   text-align: center;
-  padding: 150px 0;
+  padding: 0; 
+  height: 100vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-section h1 {
@@ -230,7 +235,6 @@ h6,
 /* Adopt a pet section styles */
 .adopt-section {
   padding: 50px 0;
-  background: #f5f5f5;
   text-align: center;
 }
 
@@ -243,16 +247,13 @@ h6,
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
-  margin: 0 auto;
-  padding: 0 15px;  
   min-width: 30px;
   min-height: 50px;
 }
 
 .pet-card {
   transition: transform 0.3s ease;
-  box-sizing: border-box; /* Ensure padding and border are included in the width */
-
+  box-sizing: border-box; 
 }
 
 .pet-card:hover {
@@ -294,33 +295,28 @@ h6,
   background-color: #ffffff;
 }
 
-/* Responsive design for different screen sizes */
+
 @media (min-width: 992px) {
-  /* Large screens: 3 pet cards per row */
   .pet-card {
-    flex: 1 1 calc(33.333% - 30px); /* 3 cards per row, with gap considered */
+    flex: 1 1 calc(33.333% - 30px); 
     max-width: calc(33.333% - 30px);
   }
 }
 
 @media (max-width: 991px) and (min-width: 768px) {
-  /* Medium screens: 2 pet cards per row */
   .pet-card {
-    flex: 1 1 calc(50% - 30px); /* 2 cards per row, with gap considered */
+    flex: 1 1 calc(50% - 30px); 
     max-width: calc(50% - 30px);
   }
 }
 
 @media (max-width: 767px) {
-  /* Small screens: 1 pet card per row */
   .pet-card {
-    flex: 1 1 100%; /* 1 card per row */
+    flex: 1 1 100%; 
     max-width: 100%;
   }
 }
 
-
-/* Pagination styles */
 .pagination {
   margin-top: 20px;
 }

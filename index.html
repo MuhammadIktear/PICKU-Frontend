@@ -54,7 +54,6 @@
       /* Adopt a pet section styles */
       .adopt-section {
         padding: 50px 0;
-        background-color: #ffffff;
         text-align: center;
       }     
       .adopt-section h2 {
@@ -66,7 +65,6 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 30px;
-        margin: 0 auto;
         padding: 0 15px;  
         min-width: 30px;
         min-height: 50px;
@@ -75,7 +73,7 @@
       
       .pet-card {
         transition: transform 0.3s ease;
-        box-sizing: border-box; 
+        box-sizing: border-box;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         background-color: #ffffff;
       }
@@ -190,6 +188,23 @@
   color: #007bff; /* Change color on hover */
 }
 
+.about-picku h1{
+  font-size: 3em;
+  line-height: 1.6;
+  letter-spacing: 1.2px;  
+  color: #ffcd42;
+  font-weight: 700;
+}
+.about-picku p{
+  text-align: left;
+  font-size: 16px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #ffffff;
+  
+} 
+
 .footer{
   background:#ffffff;
   padding:10px 0px;
@@ -228,7 +243,21 @@
   font-size:2em;
   margin:0% 1%;
   }
-  
+
+.review-container {
+  max-width: 90%;
+  margin: 0 auto; 
+  padding: 1rem; 
+  box-sizing: border-box;
+}
+
+@media (min-width: 992px) {
+  .review-container {
+    max-width: 80%;
+    padding: 0;
+  }
+}
+
   @media (max-width:720px){
   .footer{
   text-align:left;
@@ -285,9 +314,9 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
-      <div class="container">
+      <div class="about-picku container">
         <h1>Welcome to Picku</h1>
-        <p>Your companion is waiting for you. Adopt a pet today!</p>
+        <p>At PICKU, we're dedicated to connecting loving families with pets in need of a forever home. Our team is passionate about helping animals find the care and companionship they deserve. Through our platform, you can explore a wide range of pets, read reviews, and find the perfect match for your family. Join us in making a difference and finding your new best friend today!</p>
         <a href="all_pets.html" class="btn btn-primary">View Pets</a>
       </div>
     </section>
@@ -296,14 +325,14 @@
     <!-- Filters and Pet List -->
     <div class="container">
       <div class="d-flex">
-        <h3 class="text-warning text-center w-75 m-auto mt-5 py-3 mb-3">Pets Available For Adoption Nearby <a href="all_pets.html"><img class="see_more_img bg-light" src="/img/-navigate-next_90472.webp" alt=""></a> </h3>
+        <h3 class="text-warning text-center w-75 m-auto mt-4 py-3">Pets Available For Adoption Nearby <a href="all_pets.html"><img class="see_more_img bg-light" src="/img/-navigate-next_90472.webp" alt=""></a> </h3>
       </div>
       <div class="flex" style="display: none;">
       </div>
 
       <div>
         <section id="pets" class="adopt-section">
-          <div>
+          <div style="margin-top: -30px;">
             <div id="pet-grid" class="pet-grid row"></div>
           </div>
 
@@ -313,7 +342,7 @@
           </div>
 
           <div id="spinner" class="spinner">
-            <h3 class="text-center mt-5">Loading...</h3>
+            <h3 class="text-center mt-5 text-white">Loading...</h3>
           </div>
          
         </section>
@@ -322,12 +351,12 @@
     </div>
 
 <!-- review -->
-<div class=" container review-container p-3 mt-5">
+<div class=" review-container p-3 mt-3">
   <h3 class="text-warning text-center w-75 m-auto py-3">Adopted Pet Reviews</h3>
   <p class="description text-center w-75 m-auto">Discover the best pets for your family by reading reviews from other adopters! Here, you can find detailed feedback and heartwarming stories about the pets in our care. Learn about their personalities, quirks, and experiences from those who have met them. Your perfect pet might just be a review away!</p>
-  <div class="p-5 mt-5 reviews" style="background-color: #ffffff;">
-    <div class="swiffy-slider slider-item-show2 slider-item-reveal slider-nav-outside slider-nav-round slider-nav-visible slider-indicators-outside slider-indicators-round slider-indicators-dark slider-nav-animation  slider-item-first-visible">
-      <ul id="review-container" class="slider-container py-4">
+  <div class="p-5 reviews" style="margin-top: -20px;">
+    <div class="swiffy-slider slider-item-show2 slider-item-reveal slider-nav-outside slider-nav-round slider-nav-visible slider-indicators-outside slider-indicators-round slider-indicators-light slider-nav-animation  slider-item-first-visible">
+      <ul id="review-container" class="slider-container">
         <!-- Example pet card -->
         <li class="review-card" id="review-card"></li>
       </ul>
@@ -346,8 +375,8 @@
   </div>
 </div>
 
-<div class="container">
-  <h3 class="mt-5 text-warning text-center w-75 m-auto py-3">Pet Blogs</h3>
+<div class="container mt-3 ">
+  <h3 class="text-warning text-center w-75 m-auto py-3">Pet Blogs</h3>
   <p class="description text-center w-75 m-auto">Pet blogs are an excellent way for pet and animal lovers to learn more about their favorite creatures. Many are run by expert veterinarians to ensure you get correct and appropriate information.</p>  
   <div class="row mt-4">
     <div class="col-sm-6">
@@ -363,7 +392,7 @@
       <div class="card">
         <div class="card-body">
           <h3 class="card-title" style="color:#ca880d ; letter-spacing: 0.5px;">How to Keep Your Cat Happy and Healthy</h3>
-          <p class="card-text" style="color: #524e4e;letter-spacing: 0.5px;">Cats are independent creatures with unique needs. Providing them with a stimulating environment and proper care can help ensure they lead a happy and healthy life. Here are some tips to keep your feline friend content.</p>
+          <p class="card-text" style="color: #524e4e;letter-spacing: 0.5px;">Cats are independent creatures with unique needs. Providing them with a stimulating environment and proper care can help ensure they lead a happy and healthy life.</p>
           <a href="cat_blog.html" class="btn btn-primary">More</a>
         </div>
       </div>
