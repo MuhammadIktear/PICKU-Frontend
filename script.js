@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const userId = localStorage.getItem("user_id");
   console.log(`User ID: ${userId}`);
 
-  const userApiUrl = `https://pet-adopt-website-picku.onrender.com/user/list/${userId}/`;
-  const profileApiUrl = `https://pet-adopt-website-picku.onrender.com/user/UserProfileDetail/${userId}/`;
+  const userApiUrl = `https://picku-a-pet-adoption-website.onrender.com/user/list/${userId}/`;
+  const profileApiUrl = `https://picku-a-pet-adoption-website.onrender.com/user/UserProfileDetail/${userId}/`;
 
   const filters = {
     species: null,
@@ -50,12 +50,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Load lookup data
   function loadLookupData() {
-    const speciesPromise = fetch("https://pet-adopt-website-picku.onrender.com/pets/species/").then(res => res.json());
-    const sexPromise = fetch("https://pet-adopt-website-picku.onrender.com/pets/sex/").then(res => res.json());
-    const colorPromise = fetch("https://pet-adopt-website-picku.onrender.com/pets/color/").then(res => res.json());
-    const breedPromise = fetch("https://pet-adopt-website-picku.onrender.com/pets/breed/").then(res => res.json());
-    const sizePromise = fetch("https://pet-adopt-website-picku.onrender.com/pets/size/").then(res => res.json());
-    const statusPromise = fetch("https://pet-adopt-website-picku.onrender.com/pets/status/").then(res => res.json());
+    const speciesPromise = fetch("https://picku-a-pet-adoption-website.onrender.com/pets/species/").then(res => res.json());
+    const sexPromise = fetch("https://picku-a-pet-adoption-website.onrender.com/pets/sex/").then(res => res.json());
+    const colorPromise = fetch("https://picku-a-pet-adoption-website.onrender.com/pets/color/").then(res => res.json());
+    const breedPromise = fetch("https://picku-a-pet-adoption-website.onrender.com/pets/breed/").then(res => res.json());
+    const sizePromise = fetch("https://picku-a-pet-adoption-website.onrender.com/pets/size/").then(res => res.json());
+    const statusPromise = fetch("https://picku-a-pet-adoption-website.onrender.com/pets/status/").then(res => res.json());
 
     return Promise.all([speciesPromise, sexPromise, colorPromise, breedPromise, sizePromise, statusPromise])
       .then(([speciesData, sexData, colorData, breedData, sizeData, statusData]) => {
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .map(key => `${key}=${encodeURIComponent(filters[key])}`)
       .join('&');
 
-    fetch(`https://pet-adopt-website-picku.onrender.com/pets/petlist/?page=${page}&page_size=${pageSize}&search=${encodeURIComponent(searchQuery)}&${filterParams}`)
+    fetch(`https://picku-a-pet-adoption-website.onrender.com/pets/petlist/?page=${page}&page_size=${pageSize}&search=${encodeURIComponent(searchQuery)}&${filterParams}`)
       .then((res) => res.json())
       .then((data) => {
         const parent = document.getElementById("pet-grid");
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
       parent.appendChild(div);
 
       // Fetch user information for the creator of the pet
-      fetch(`https://pet-adopt-website-picku.onrender.com/user/UserProfileDetail/${pet.created_by}/`)
+      fetch(`https://picku-a-pet-adoption-website.onrender.com/user/UserProfileDetail/${pet.created_by}/`)
         .then((res) => res.json())
         .then((user) => {
           const userDiv = div.querySelector('.creator-info');

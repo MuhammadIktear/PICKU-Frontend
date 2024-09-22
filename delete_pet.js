@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const confirmed = confirm('Are you sure you want to delete this pet?');
             if (confirmed) {
                 try {
-                    const response = await fetch(`https://pet-adopt-website-picku.onrender.com/pets/petlist/${petId}/`, {
+                    const response = await fetch(`https://picku-a-pet-adoption-website.onrender.com/pets/petlist/${petId}/`, {
                         method: 'DELETE',
                         headers: {
                             'Accept': 'application/json',

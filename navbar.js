@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const checkTokenValidity = async () => {
       try {
-          const response = await fetch('https://pet-adopt-website-picku.onrender.com/user/logout/', {
+          const response = await fetch('https://picku-a-pet-adoption-website.onrender.com/user/logout/', {
               headers: {
                   'Authorization': `Token ${userToken}`
               }

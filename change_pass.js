@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   confirm_new_password: confirmNewPassword,
               };
 
-              fetch('https://pet-adopt-website-picku.onrender.com/user/change-password/', {
+              fetch('https://picku-a-pet-adoption-website.onrender.com/user/change-password/', {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',

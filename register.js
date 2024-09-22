@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
 
       try {
-          const response = await fetch("https://pet-adopt-website-picku.onrender.com/user/register/", {
+          const response = await fetch("https://picku-a-pet-adoption-website.onrender.com/user/register/", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(info),
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
 
       try {
-          const response = await fetch("https://pet-adopt-website-picku.onrender.com/user/login/", {
+          const response = await fetch("https://picku-a-pet-adoption-website.onrender.com/user/login/", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ username, password }),

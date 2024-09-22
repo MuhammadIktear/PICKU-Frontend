@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
     };
   
     const userId = localStorage.getItem("user_id");
-    const userApiUrl = `https://pet-adopt-website-picku.onrender.com/user/list/${userId}/`;
-    const profileApiUrl = `https://pet-adopt-website-picku.onrender.com/user/UserProfileDetail/${userId}/`;
+    const userApiUrl = `https://picku-a-pet-adoption-website.onrender.com/user/list/${userId}/`;
+    const profileApiUrl = `https://picku-a-pet-adoption-website.onrender.com/user/UserProfileDetail/${userId}/`;
   
     function fetchUserData() {
       // Fetch user details

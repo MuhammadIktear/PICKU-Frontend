@@ -10,7 +10,7 @@ const loadUserAccount = () => {
         fetchId = userId;
     }
 
-    fetch(`https://pet-adopt-website-picku.onrender.com/user/UserProfileDetail/${fetchId}/`)
+    fetch(`https://picku-a-pet-adoption-website.onrender.com/user/UserProfileDetail/${fetchId}/`)
         .then(response => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -47,11 +47,11 @@ async function fetchAndDisplayPets() {
         let fetchId = new URLSearchParams(window.location.search).get("id");
         const userId = localStorage.getItem("user_id");
         if (!fetchId || fetchId === userId) {
-            const adoptedPetsAPI = `https://pet-adopt-website-picku.onrender.com/pets/petlist/?adopted_by=${userId}`;
+            const adoptedPetsAPI = `https://picku-a-pet-adoption-website.onrender.com/pets/petlist/?adopted_by=${userId}`;
             const adoptedResponse = await fetch(adoptedPetsAPI);
             const adoptedData = await adoptedResponse.json();
             
-            const sellingRescuedPetsAPI = `https://pet-adopt-website-picku.onrender.com/pets/petlist/?created_by=${userId}`;
+            const sellingRescuedPetsAPI = `https://picku-a-pet-adoption-website.onrender.com/pets/petlist/?created_by=${userId}`;
             const sellingResponse = await fetch(sellingRescuedPetsAPI);
             const sellingData = await sellingResponse.json();
             
@@ -63,11 +63,11 @@ async function fetchAndDisplayPets() {
             displayPets(sellingData.results, "sellingRescuedPetsContainer", true, lookupData);
         }
         else {
-            const adoptedPetsAPI = `https://pet-adopt-website-picku.onrender.com/pets/petlist/?adopted_by=${fetchId}`;
+            const adoptedPetsAPI = `https://picku-a-pet-adoption-website.onrender.com/pets/petlist/?adopted_by=${fetchId}`;
             const adoptedResponse = await fetch(adoptedPetsAPI);
             const adoptedData = await adoptedResponse.json();
             
-            const sellingRescuedPetsAPI = `https://pet-adopt-website-picku.onrender.com/pets/petlist/?created_by=${fetchId}`;
+            const sellingRescuedPetsAPI = `https://picku-a-pet-adoption-website.onrender.com/pets/petlist/?created_by=${fetchId}`;
             const sellingResponse = await fetch(sellingRescuedPetsAPI);
             const sellingData = await sellingResponse.json();
             
@@ -87,7 +87,7 @@ async function fetchAndDisplayPets() {
 }
 
 async function fetchData(key) {
-    const url = `https://pet-adopt-website-picku.onrender.com/pets/${key}/`;
+    const url = `https://picku-a-pet-adoption-website.onrender.com/pets/${key}/`;
     const response = await fetch(url);
     return await response.json();
 }

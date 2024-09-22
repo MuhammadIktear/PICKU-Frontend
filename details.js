@@ -3,19 +3,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const userId = localStorage.getItem("user_id");
   const userToken = localStorage.getItem("token");
 
-  const petDetailsApiUrl = `https://pet-adopt-website-picku.onrender.com/pets/${petId}/`;
-  const reviewSubmitApiUrl = `https://pet-adopt-website-picku.onrender.com/pets/${petId}/reviews/`;
+  const petDetailsApiUrl = `https://picku-a-pet-adoption-website.onrender.com/pets/${petId}/`;
+  const reviewSubmitApiUrl = `https://picku-a-pet-adoption-website.onrender.com/pets/${petId}/reviews/`;
 
   let userName = '';
   let userEmail = '';
 
   const endpoints = {
-    species: 'https://pet-adopt-website-picku.onrender.com/pets/species/',
-    status: 'https://pet-adopt-website-picku.onrender.com/pets/status/',
-    breed: 'https://pet-adopt-website-picku.onrender.com/pets/breed/',
-    color: 'https://pet-adopt-website-picku.onrender.com/pets/color/',
-    size: 'https://pet-adopt-website-picku.onrender.com/pets/size/',
-    sex: 'https://pet-adopt-website-picku.onrender.com/pets/sex/',
+    species: 'https://picku-a-pet-adoption-website.onrender.com/pets/species/',
+    status: 'https://picku-a-pet-adoption-website.onrender.com/pets/status/',
+    breed: 'https://picku-a-pet-adoption-website.onrender.com/pets/breed/',
+    color: 'https://picku-a-pet-adoption-website.onrender.com/pets/color/',
+    size: 'https://picku-a-pet-adoption-website.onrender.com/pets/size/',
+    sex: 'https://picku-a-pet-adoption-website.onrender.com/pets/sex/',
   };
 
   let lookupData = {};
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function fetchUserDetails() {
-    return fetch('https://pet-adopt-website-picku.onrender.com/user/list/')
+    return fetch('https://picku-a-pet-adoption-website.onrender.com/user/list/')
       .then(response => response.json())
       .then(users => {
         const user = users.find(user => user.id === parseInt(userId));

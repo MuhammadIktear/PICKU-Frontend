@@ -1,5 +1,5 @@
 const loadReview = () => {
-    fetch("https://pet-adopt-website-picku.onrender.com/pets/list/")
+    fetch("https://picku-a-pet-adoption-website.onrender.com/pets/list/")
       .then((res) => {
         if (!res.ok) {
           throw new Error('Network response was not ok');

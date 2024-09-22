@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        const depositUrl = 'https://pet-adopt-website-picku.onrender.com/user/deposit/';
+        const depositUrl = 'https://picku-a-pet-adoption-website.onrender.com/user/deposit/';
         const token = localStorage.getItem('token'); 
 
         if (!token) {
