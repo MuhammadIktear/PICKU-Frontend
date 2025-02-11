@@ -10,12 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const rehomingFeeInput = document.getElementById('rehoming-fee');
 
     const apiUrls = {
-        species: 'https://picku-a-pet-adoption-website.onrender.com/pets/species/',
-        status: 'https://picku-a-pet-adoption-website.onrender.com/pets/status/',
-        sex: 'https://picku-a-pet-adoption-website.onrender.com/pets/sex/',
-        breed: 'https://picku-a-pet-adoption-website.onrender.com/pets/breed/',
-        color: 'https://picku-a-pet-adoption-website.onrender.com/pets/color/',
-        size: 'https://picku-a-pet-adoption-website.onrender.com/pets/size/',
+        species: 'https://picku-pet-website-deployment1.vercel.app/pets/species/',
+        status: 'https://picku-pet-website-deployment1.vercel.app/pets/status/',
+        sex: 'https://picku-pet-website-deployment1.vercel.app/pets/sex/',
+        breed: 'https://picku-pet-website-deployment1.vercel.app/pets/breed/',
+        color: 'https://picku-pet-website-deployment1.vercel.app/pets/color/',
+        size: 'https://picku-pet-website-deployment1.vercel.app/pets/size/',
     };
 
     const dataCache = {};
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Form data:', formData); 
 
         try {
-            const response = await fetch('https://picku-a-pet-adoption-website.onrender.com/pets/petlist/', {
+            const response = await fetch('https://picku-pet-website-deployment1.vercel.app/pets/petlist/', {
                 method: 'POST',
                 body: formData,
                 headers: {

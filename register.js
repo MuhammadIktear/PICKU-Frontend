@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
 
       try {
-          const response = await fetch("https://picku-a-pet-adoption-website.onrender.com/user/login/", {
+          const response = await fetch("https://picku-pet-website-deployment1.vercel.app/user/login/", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ username, password }),

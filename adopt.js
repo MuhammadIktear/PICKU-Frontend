@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const pay = document.getElementById('pay');
 
   const apiUrls = {
-    pets: `https://picku-a-pet-adoption-website.onrender.com/pets/petlist/${petId}`,
+    pets: `https://picku-pet-website-deployment1.vercel.app/pets/petlist/${petId}`,
   };
 
   fetch(apiUrls.pets)
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
       pet: petId
     };
 
-    fetch('https://picku-a-pet-adoption-website.onrender.com/pets/adopt/', {
+    fetch('https://picku-pet-website-deployment1.vercel.app/pets/adopt/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
