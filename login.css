@@ -72,7 +72,12 @@ body {
   border: none;
   transition: background-color 0.3s ease-in-out;
 }
-
+.login-form button{
+  background-color: #1f242b;
+  border: none;
+  transition: background-color 0.3s ease-in-out;  
+  color: white;
+}
 .btn-outline-primary:hover {
   background-color: #1f242b;
 }
