@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const alertContainer = document.getElementById('alert-container');
 
     const apiUrls = {
-        species: 'https://picku-pet-website-deployment1.vercel.app/pets/species/',
-        status: 'https://picku-pet-website-deployment1.vercel.app/pets/status/',
-        sex: 'https://picku-pet-website-deployment1.vercel.app/pets/sex/',
-        breed: 'https://picku-pet-website-deployment1.vercel.app/pets/breed/',
-        color: 'https://picku-pet-website-deployment1.vercel.app/pets/color/',
-        size: 'https://picku-pet-website-deployment1.vercel.app/pets/size/',
+        species: 'https://picku-a-pet-adoption-website.onrender.com/pets/species/',
+        status: 'https://picku-a-pet-adoption-website.onrender.com/pets/status/',
+        sex: 'https://picku-a-pet-adoption-website.onrender.com/pets/sex/',
+        breed: 'https://picku-a-pet-adoption-website.onrender.com/pets/breed/',
+        color: 'https://picku-a-pet-adoption-website.onrender.com/pets/color/',
+        size: 'https://picku-a-pet-adoption-website.onrender.com/pets/size/',
     };
 
     const dataCache = {};
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const petId = new URLSearchParams(window.location.search).get('id');
             if (!petId) throw new Error('Pet ID is missing from the URL.');
 
-            const response = await fetch(`https://picku-pet-website-deployment1.vercel.app/pets/petlist/${petId}/`);
+            const response = await fetch(`https://picku-a-pet-adoption-website.onrender.com/pets/petlist/${petId}/`);
             if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
             const pet = await response.json();
 
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const petId = new URLSearchParams(window.location.search).get('id');
             if (!petId) throw new Error('Pet ID is missing from the URL.');
 
-            const response = await fetch(`https://picku-pet-website-deployment1.vercel.app/pets/petlist/${petId}/`, {
+            const response = await fetch(`https://picku-a-pet-adoption-website.onrender.com/pets/petlist/${petId}/`, {
                 method: 'PATCH',
                 body: formData,
                 headers: {

@@ -9,7 +9,7 @@ function handleLogout() {
       return;
     }
   
-    fetch('https://picku-pet-website-deployment1.vercel.app/user/logout/', {
+    fetch('https://picku-a-pet-adoption-website.onrender.com/user/logout/', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
