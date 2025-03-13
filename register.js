@@ -63,9 +63,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         event.preventDefault();
         const username = getValue("login-username");
         const password = getValue("login-password");
+        const submitButton = loginForm.querySelector("button[type='submit']");
+        submitButton.disabled = true;
+        submitButton.textContent = "Loading...";
   
         if (!username || !password) {
             showAlert("Username and password are required.", "alert-danger");
+            submitButton.disabled = false;
+            submitButton.textContent = "Login";
             return;
         }
   
@@ -79,6 +84,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (!response.ok) {
                 const errorData = await response.json();
                 showAlert(`Login failed: ${errorData.detail || response.statusText}`, "alert-danger");
+                submitButton.disabled = false;
+                submitButton.textContent = "Login";
                 return;
             }
   
@@ -93,6 +100,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         } catch (error) {
             console.error("Login error:", error);
             showAlert("An error occurred during login. Please try again.", "alert-danger");
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = "Login";
         }
     }
   
